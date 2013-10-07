@@ -1,0 +1,30 @@
+<!--[if lt IE 7]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="ui fixed transparent inverted main menu">
+  <div class="container">
+    <a class="launch item" ui-sref="app.my.timeline"><i class="rocket icon"></i> RealTime-Survey</a>
+
+    <div class="right menu">
+      <a ng-class="{active:$state.is('app.notification')}" class="popup developer icon item" ui-sref="app.notification">
+        <i class="bell outline icon"></i>
+      </a>
+      <a ng-class="{active:$state.is('app.setting')}" class="popup developer icon item" ui-sref="app.setting">
+        <i class="setting icon"></i>
+      </a>
+      <a class="popup icon github item" ng-click="logout()">
+        <i class="sign out icon"></i>
+        logout
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Add your site or application content here -->
+<div class="container" ui-view></div>
+
+<div class="copyright">
+  <span class="ui black label">2013 © Dev-study</span>
+</div>
+
