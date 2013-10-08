@@ -6,3 +6,25 @@
 .ui.selection.dropdown.paper{ 
 	vertical-align: top;
 }
+
+.main-title{
+	/*background: #454647;*/
+	background: #323334;
+	color: orange;
+	font-style: italic;
+}
+
+.top-btn{
+  float: right;
+  text-align: bottom;
+  margin-top: -7px;
+  margin-right: 3px;
+}
+
+.launch.item.text{
+	color: red;
+}
+
+.ui.inverted.segment{
+	background-color: #323334;
+}

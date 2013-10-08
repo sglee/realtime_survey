@@ -51,3 +51,12 @@
   padding-top:20px;
   font-size:1.5rem;
 }
+
+.app-layout {
+  background-color: #353336;
+}
+
+
+.app-layout .main-content {
+  background-color: cadetblue;
+}

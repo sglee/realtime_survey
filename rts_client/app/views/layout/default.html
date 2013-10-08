@@ -3,19 +3,25 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div class="wrapper">
-  <a class="top-btn" ui-sref="default.join" ng-show="!$state.is('default.join')">
-    Join
-  </a>
-  <a class="top-btn" ui-sref="default.welcome" ng-show="$state.is('default.join')">
-    Login
-  </a>
-  <a class="top-btn" ui-sref="app.paper" >
-    Settings
-  </a>
+<div style="background:gray;height:2px"></div>
+<div class="wrapper main-top-title">
+  
   <div class="main-title">
+
     <h1 class="ui header">
       RTS <div class="ui red label">Beta</div>
+      <span class="top-btn">
+        <a class="ui yellow label" ui-sref="default.join" ng-show="!$state.is('default.join')">
+        <i class="user icon"></i>
+   Join
+  </a>
+  <a class="ui yellow label" ui-sref="default.welcome" ng-show="$state.is('default.join')">
+     <i class="sign in icon"></i>Login
+  </a>
+  <a class="ui yellow label" ui-sref="app.paper" >
+    <i class="setting icon"></i> setting
+  </a>
+  </span>
     </h1>
 
   </div>
