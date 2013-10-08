@@ -36,42 +36,42 @@ angular.module('rtsClientApp', ['ngResource', 'ui.router'])
           setBodyClass("app-layout");
         }
       })
-        .state('app.my', {
+        .state('app.rts', {
           url: '/app',
-          templateUrl: '/views/app/Survey.html',
+          templateUrl: '/views/app/survey.html',
           controller: 'AppSurveyCtrl',
           abstract: true
         })
 
-        .state('app.community', {
-          url: '/app/communities',
-          templateUrl: '/views/app/Survey.html',
+        .state('app.survey', {
+          url: '/app/survey',
+          templateUrl: '/views/app/survey.html',
           controller: 'AppSurveyCtrl',
           abstract: true
         })
  
-          .state('app.community.report', {
-            url: '/:community_id/report',
-            templateUrl: '/views/app/Survey/report.html',
+          .state('app.survey.report', {
+            url: '/:survey_id/report',
+            templateUrl: '/views/app/survey/report.html',
             controller: 'AppSurveyReportCtrl'
           })
-          /*
-          .state('app.community.member', {
-            url: '/:community_id/members',
-            templateUrl: '/views/app/Survey/member.html',
+          
+          .state('app.survey.member', {
+            url: '/:survey_id/members',
+            templateUrl: '/views/app/survey/member.html',
             controller: 'AppSurveyMemberCtrl'
           })
-          .state('app.community.setting', {
-            url: '/:community_id/setting',
-            templateUrl: '/views/app/Survey/setting.html',
+          .state('app.survey.setting', {
+            url: '/:survey_id/setting',
+            templateUrl: '/views/app/survey/setting.html',
             controller: 'AppSurveySettingCtrl'
           })
-          .state('app.community.Survey', {
-            url: '/:community_id',
-            templateUrl: '/views/app/Survey/detail.html',
-            controller: 'AppSurveyDetailCtrl'
+          .state('app.survey.question', {
+            url: '/:question_id',
+            templateUrl: '/views/app/survey/question.html',
+            controller: 'AppSurveyQuestionCtrl'
           })
-*/
+
         .state('app.notification', {
           url: '/app/notifications',
           templateUrl: '/views/app/notification.html',
