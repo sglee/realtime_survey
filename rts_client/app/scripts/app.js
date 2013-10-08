@@ -1,3 +1,11 @@
+ /* 
+ * 모듈명: rtsClientApp
+ *
+ * rts 라우터 정보를 관리하는 모듈
+ *
+ * History
+ * v1.0 - 최초 작성, sglee(2013/10/07)
+ */
 'use strict';
 
 angular.module('rtsClientApp', ['ngResource', 'ui.router'])
