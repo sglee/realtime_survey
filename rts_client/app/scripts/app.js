@@ -32,6 +32,11 @@ angular.module('rtsClientApp', ['ngResource', 'ui.router'])
           url: '/join',
           templateUrl: '/views/join.html',
           controller: 'JoinCtrl'
+        })
+        .state('default.nojoin',{
+          url: '/nojoin',
+          templateUrl: '/views/nojoin.html',
+          controller: 'NoJoinCtrl'
         });
 
 

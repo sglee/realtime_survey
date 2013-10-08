@@ -22,8 +22,12 @@ angular.module('rtsClientApp')
       $state.go('app.my.survey');
     }
 
-     $scope.login = function() {
+    $scope.login = function() {
       $state.go('app.my.survey');
+    }
+
+    $scope.access = function(){
+      $state.go('default.nojoin')
     }
 
      $scope.sign = function() {

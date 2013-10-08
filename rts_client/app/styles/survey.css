@@ -28,3 +28,12 @@
 .ui.inverted.segment{
 	background-color: #323334;
 }
+
+.access-text{
+	color: yellow;
+	font-size: 1.2em;
+	font-style: bold;
+}
+.access-center{
+	text-align: center;
+}
