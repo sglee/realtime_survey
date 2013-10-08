@@ -1,7 +1,7 @@
  /* 
  * 모듈명: rtsClientApp
  *
- * rts 라우터 정보를 관리하는 모듈
+ * rts 라우터 정보를 관리하는 모
  *
  * History
  * v1.0 - 최초 작성, sglee(2013/10/07)
@@ -34,6 +34,7 @@ angular.module('rtsClientApp', ['ngResource', 'ui.router'])
           controller: 'JoinCtrl'
         });
 
+
     // main app route
     $stateProvider
       .state('app', {
@@ -44,38 +45,40 @@ angular.module('rtsClientApp', ['ngResource', 'ui.router'])
           setBodyClass("app-layout");
         }
       })
-        .state('app.rts', {
-          url: '/app',
-          templateUrl: '/views/app/survey.html',
-          controller: 'AppSurveyCtrl',
-          abstract: true
-        })
-
-        .state('app.survey', {
-          url: '/app/survey',
-          templateUrl: '/views/app/survey.html',
-          controller: 'AppSurveyCtrl',
-          abstract: true
-        })
- 
-          .state('app.survey.report', {
-            url: '/:survey_id/report',
-            templateUrl: '/views/app/survey/report.html',
-            controller: 'AppSurveyReportCtrl'
-          })
-          
-          .state('app.survey.member', {
-            url: '/:survey_id/members',
-            templateUrl: '/views/app/survey/member.html',
-            controller: 'AppSurveyMemberCtrl'
-          })
-          .state('app.survey.setting', {
-            url: '/:survey_id/setting',
-            templateUrl: '/views/app/survey/setting.html',
-            controller: 'AppSurveySettingCtrl'
-          })
-          .state('app.survey.question', {
-            url: '/:question_id',
+      .state('app.rts', {
+        url: '/app',
+        templateUrl: '/views/app/survey.html',
+        controller: 'AppSurveyCtrl',
+                  //abstract: true
+      })
+      .state('app.paper', {
+          url: '/paper',
+          templateUrl: '/views/app/survey/paper.html',
+          controller: 'AppSurveyPaperCtrl'
+      })
+      .state('app.survey', {
+        url: '/survey',
+        templateUrl: '/views/app/survey.html',
+        controller: 'AppSurveyCtrl',
+        abstract: false
+      })
+      .state('app.survey.report', {
+        url: '/:survey_id/report',
+        templateUrl: '/views/app/survey/report.html',
+        controller: 'AppSurveyReportCtrl'
+      })
+      .state('app.survey.member', {
+        url: '/:survey_id/members',
+        templateUrl: '/views/app/survey/member.html',
+        controller: 'AppSurveyMemberCtrl'
+      })
+      .state('app.survey.setting', {
+        url: '/:survey_id/setting',
+        templateUrl: '/views/app/survey/setting.html',
+        controller: 'AppSurveySettingCtrl'
+      })
+      .state('app.survey.question', {
+        url: '/:question_id',
             templateUrl: '/views/app/survey/question.html',
             controller: 'AppSurveyQuestionCtrl'
           })
