@@ -14,7 +14,6 @@ angular.module('rtsClientApp')
 		$scope.item = {count: 0, total: 130,title: '본 세미나는 유익했습니까? 본 세미나는 유익했습니까 본 세미나는 유익했습니까 본 세미나는 유익했습니까 본 세미나는 유익했습니까 본 세미나는 유익했습니까'};
 	
 		$scope.next = function(){
-			alert('next');
 			$state.go('app.rtsquestion');
 		}
 	});
