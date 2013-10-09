@@ -31,9 +31,19 @@
 
 .access-text{
 	color: yellow;
-	font-size: 1.2em;
+	text-align: center;
+	font-size: 1.6em;
 	font-style: bold;
 }
 .access-center{
 	text-align: center;
+	vertical-align: middle;
 }
+
+.ui.top.attached.label{
+	background-color: slategray;
+	font-weight: bold;
+	font-style: italic;
+}
+
+

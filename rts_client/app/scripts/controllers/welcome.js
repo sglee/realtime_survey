@@ -10,27 +10,22 @@
 
 angular.module('rtsClientApp')
   .controller('WelcomeCtrl', function ($scope, $state) {
-    $scope.loginWithFacebook = function() {
+    $scope.loginWithFacebook = function(){
       $state.go('app.my.survey');
     }
-
-    $scope.loginWithTwitter = function() {
+    $scope.loginWithTwitter = function(){
       $state.go('app.my.survey');
     }
-
-    $scope.loginWithEmail = function() {
+    $scope.loginWithEmail = function(){
       $state.go('app.my.survey');
     }
-
-    $scope.login = function() {
+    $scope.login = function(){
       $state.go('app.my.survey');
     }
-
     $scope.access = function(){
-      $state.go('default.nojoin')
+      $state.go('default.nojoin');
     }
-
-     $scope.sign = function() {
+    $scope.sign = function(){
       $state.go('app.my.survey');
     }
   });
