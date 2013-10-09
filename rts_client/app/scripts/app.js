@@ -70,6 +70,11 @@ angular.module('rtsClientApp', ['ngResource', 'ui.router'])
         templateUrl: '/views/app/survey/rtsquestion.html',
         controller: 'AppSurveyRtsQuestionCtrl'
       })
+      .state('app.paperlist', {
+        url: '/paperlist',
+        templateUrl: '/views/app/survey/paperlist.html',
+        controller: 'AppSurveyPaperlistCtrl'
+      })
       .state('app.survey', {
         url: '/survey',
         templateUrl: '/views/app/survey.html',
