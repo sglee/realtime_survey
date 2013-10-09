@@ -1,3 +1,29 @@
 <div class="main-content">
-  <p>This is the app/survey/question view.</p>
+<div class="ui form segment">
+<h3 class="ui black header">
+  <div class="sub header">2013 Open source conference</div>
+  {{item.title}}
+</h3>
+	<div class="ui divided selection list">
+	  <a class="item">
+	    <div class="ui blue horizontal label">Select</div>
+	     매우 만족함 
+	  </a>
+	  <a class="item">
+	    <div class="ui red horizontal label">Select</div>
+	    다소 만족함 
+	  </a>
+	  <a class="item">
+	    <div class="ui blue horizontal label">Select</div>
+	 	불만족
+	  </a>
+	  <a class="item">
+	    <div class="ui blue horizontal label">Select</div>
+		아주 불만족 
+	  </a>
+	</div>
+	<div class="access-center">
+      <a class="ui blue submit button" ng-click="next()">Next</a>
+    </div>
+</div>
 </div>

@@ -23,22 +23,21 @@ angular.module('rtsClientApp', ['ngResource', 'ui.router'])
           setBodyClass("default-layout");
         }
       })
-        .state('default.welcome', {
-          url: '/',
-          templateUrl: '/views/welcome.html',
-          controller: 'WelcomeCtrl'
-        })
-        .state('default.join', {
-          url: '/join',
-          templateUrl: '/views/join.html',
-          controller: 'JoinCtrl'
-        })
-        .state('default.nojoin',{
-          url: '/nojoin',
-          templateUrl: '/views/nojoin.html',
-          controller: 'NoJoinCtrl'
-        });
-
+      .state('default.welcome', {
+        url: '/',
+        templateUrl: '/views/welcome.html',
+        controller: 'WelcomeCtrl'
+      })
+      .state('default.nojoin', {
+        url: '/nojoin',
+        templateUrl: '/views/nojoin.html',
+        controller: 'NoJoinCtrl'
+      })
+      .state('default.join', {
+        url: '/join',
+        templateUrl: '/views/join.html',
+        controller: 'JoinCtrl'
+      });
 
     // main app route
     $stateProvider
@@ -54,18 +53,28 @@ angular.module('rtsClientApp', ['ngResource', 'ui.router'])
         url: '/app',
         templateUrl: '/views/app/survey.html',
         controller: 'AppSurveyCtrl',
-                  //abstract: true
+        //abstract: true
       })
       .state('app.paper', {
           url: '/paper',
           templateUrl: '/views/app/survey/paper.html',
           controller: 'AppSurveyPaperCtrl'
       })
+      .state('app.question', {
+        url: '/question',
+        templateUrl: '/views/app/survey/question.html',
+        controller: 'AppSurveyQuestionCtrl'
+      })
+      .state('app.rtsquestion', {
+        url: '/rtsquestion',
+        templateUrl: '/views/app/survey/rtsquestion.html',
+        controller: 'AppSurveyRtsQuestionCtrl'
+      })
       .state('app.survey', {
         url: '/survey',
         templateUrl: '/views/app/survey.html',
         controller: 'AppSurveyCtrl',
-        abstract: false
+        abstract: true
       })
       .state('app.survey.report', {
         url: '/:survey_id/report',
@@ -82,22 +91,17 @@ angular.module('rtsClientApp', ['ngResource', 'ui.router'])
         templateUrl: '/views/app/survey/setting.html',
         controller: 'AppSurveySettingCtrl'
       })
-      .state('app.survey.question', {
-        url: '/:question_id',
-            templateUrl: '/views/app/survey/question.html',
-            controller: 'AppSurveyQuestionCtrl'
-          })
 
-        .state('app.notification', {
-          url: '/app/notifications',
-          templateUrl: '/views/app/notification.html',
-          controller: 'AppNotificationCtrl'
-        })
-        .state('app.setting', {
-          url: '/app/setting',
-          templateUrl: '/views/app/setting.html',
-          controller: 'AppSettingCtrl'
-        });
+      .state('app.notification', {
+        url: '/app/notifications',
+        templateUrl: '/views/app/notification.html',
+        controller: 'AppNotificationCtrl'
+      })
+      .state('app.setting', {
+        url: '/app/setting',
+        templateUrl: '/views/app/setting.html',
+        controller: 'AppSettingCtrl'
+      });
     
     $locationProvider.html5Mode(true).hashPrefix('!');
 

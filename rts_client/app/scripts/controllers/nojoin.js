@@ -9,5 +9,11 @@
 'use strict';
 
 angular.module('rtsClientApp')
-  .controller('NoJoinCtrl', function ($scope) {
+  .controller('NoJoinCtrl', function ($scope, $state, $location){
+  	$scope.cancelAccess = function (){
+      $location.path("/");
+    }
+    $scope.tryAccess = function (){
+      $state.go('app.question');
+    }
   });
