@@ -1,0 +1,12 @@
+defaults: &defaults 
+  client:
+    origin: http://localhost
+  twitter:
+    clientId: "CONSUMERKEY"
+    clientSecret: "CONSUMERSECRET"
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+production:
+  <<: *defaults
