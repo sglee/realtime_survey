@@ -1,0 +1,23 @@
+h1 Listing authorities
+
+table
+  tr
+    th Auth code
+    th Auth name
+    th Is use
+    th
+    th
+    th
+
+  - @authorities.each do |authority|
+    tr
+      td = authority.auth_code
+      td = authority.auth_name
+      td = authority.is_use
+      td = link_to 'Show', authority
+      td = link_to 'Edit', edit_authority_path(authority)
+      td = link_to 'Destroy', authority, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Authority', new_authority_path

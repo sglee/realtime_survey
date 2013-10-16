@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Auth code:
+  = @authority.auth_code
+p
+  strong Auth name:
+  = @authority.auth_name
+p
+  strong Is use:
+  = @authority.is_use
+
+= link_to 'Edit', edit_authority_path(@authority)
+'|
+= link_to 'Back', authorities_path

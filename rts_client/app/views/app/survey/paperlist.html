@@ -1,5 +1,5 @@
 
-<div class="main-content">
+<div class="main-content" >
 <div class="ui form segment">
 <h3 class="ui black header">
   <div class="sub header">{{paperlist.groupName}}</div>
@@ -20,4 +20,7 @@
       <a class="ui blue submit button" ng-click="back()">Back</a>
     </div>
 </div>
+    <div ng-show="user.errors">
+     <div class="header">{{ user.errors }}</div>
+    </div>
 </div>

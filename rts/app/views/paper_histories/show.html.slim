@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong User:
+  = @paper_history.user_id
+p
+  strong Paper:
+  = @paper_history.paper_id
+p
+  strong Start date:
+  = @paper_history.start_date
+p
+  strong Status:
+  = @paper_history.status
+
+= link_to 'Edit', edit_paper_history_path(@paper_history)
+'|
+= link_to 'Back', paper_histories_path

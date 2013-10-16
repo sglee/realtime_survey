@@ -1,0 +1,25 @@
+h1 Listing directives
+
+table
+  tr
+    th Paper
+    th Directive no
+    th Content
+    th Q type
+    th
+    th
+    th
+
+  - @directives.each do |directive|
+    tr
+      td = directive.paper_id
+      td = directive.directive_no
+      td = directive.content
+      td = directive.q_type
+      td = link_to 'Show', directive
+      td = link_to 'Edit', edit_directive_path(directive)
+      td = link_to 'Destroy', directive, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Directive', new_directive_path

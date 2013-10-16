@@ -1,0 +1,33 @@
+= form_for @paper do |f|
+  - if @paper.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@paper.errors.count, "error")} prohibited this paper from being saved:"
+      ul
+        - @paper.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :paper_id
+    = f.text_field :paper_id
+  .field
+    = f.label :group_code
+    = f.text_field :group_code
+  .field
+    = f.label :user_id
+    = f.text_field :user_id
+  .field
+    = f.label :paper_type_code
+    = f.text_field :paper_type_code
+  .field
+    = f.label :limit_time
+    = f.number_field :limit_time
+  .field
+    = f.label :question_type
+    = f.text_field :question_type
+  .field
+    = f.label :is_automatic
+    = f.text_field :is_automatic
+  .field
+    = f.label :in_use
+    = f.text_field :in_use
+  .actions = f.submit 'Save'

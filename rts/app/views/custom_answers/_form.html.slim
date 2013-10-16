@@ -1,0 +1,24 @@
+= form_for @custom_answer do |f|
+  - if @custom_answer.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@custom_answer.errors.count, "error")} prohibited this custom_answer from being saved:"
+      ul
+        - @custom_answer.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :paper_id
+    = f.number_field :paper_id
+  .field
+    = f.label :directive_no
+    = f.number_field :directive_no
+  .field
+    = f.label :custom_id
+    = f.text_field :custom_id
+  .field
+    = f.label :question_no
+    = f.number_field :question_no
+  .field
+    = f.label :answer
+    = f.text_field :answer
+  .actions = f.submit 'Save'

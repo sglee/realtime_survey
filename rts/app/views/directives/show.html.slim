@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Paper:
+  = @directive.paper_id
+p
+  strong Directive no:
+  = @directive.directive_no
+p
+  strong Content:
+  = @directive.content
+p
+  strong Q type:
+  = @directive.q_type
+
+= link_to 'Edit', edit_directive_path(@directive)
+'|
+= link_to 'Back', directives_path

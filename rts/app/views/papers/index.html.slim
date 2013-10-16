@@ -1,0 +1,33 @@
+h1 Listing papers
+
+table
+  tr
+    th Paper
+    th Group code
+    th User
+    th Paper type code
+    th Limit time
+    th Question type
+    th Is automatic
+    th In use
+    th
+    th
+    th
+
+  - @papers.each do |paper|
+    tr
+      td = paper.paper_id
+      td = paper.group_code
+      td = paper.user_id
+      td = paper.paper_type_code
+      td = paper.limit_time
+      td = paper.question_type
+      td = paper.is_automatic
+      td = paper.in_use
+      td = link_to 'Show', paper
+      td = link_to 'Edit', edit_paper_path(paper)
+      td = link_to 'Destroy', paper, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Paper', new_paper_path

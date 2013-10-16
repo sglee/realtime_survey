@@ -1,0 +1,27 @@
+h1 Listing question_items
+
+table
+  tr
+    th Question no
+    th Paper
+    th Directive no
+    th Question
+    th Img url
+    th
+    th
+    th
+
+  - @question_items.each do |question_item|
+    tr
+      td = question_item.question_no
+      td = question_item.paper_id
+      td = question_item.directive_no
+      td = question_item.question
+      td = question_item.img_url
+      td = link_to 'Show', question_item
+      td = link_to 'Edit', edit_question_item_path(question_item)
+      td = link_to 'Destroy', question_item, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Question item', new_question_item_path

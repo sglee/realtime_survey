@@ -1,0 +1,25 @@
+h1 Listing paper_histories
+
+table
+  tr
+    th User
+    th Paper
+    th Start date
+    th Status
+    th
+    th
+    th
+
+  - @paper_histories.each do |paper_history|
+    tr
+      td = paper_history.user_id
+      td = paper_history.paper_id
+      td = paper_history.start_date
+      td = paper_history.status
+      td = link_to 'Show', paper_history
+      td = link_to 'Edit', edit_paper_history_path(paper_history)
+      td = link_to 'Destroy', paper_history, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Paper history', new_paper_history_path

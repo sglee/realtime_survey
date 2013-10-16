@@ -1,0 +1,18 @@
+= form_for @authority do |f|
+  - if @authority.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@authority.errors.count, "error")} prohibited this authority from being saved:"
+      ul
+        - @authority.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :auth_code
+    = f.text_field :auth_code
+  .field
+    = f.label :auth_name
+    = f.text_field :auth_name
+  .field
+    = f.label :is_use
+    = f.text_field :is_use
+  .actions = f.submit 'Save'

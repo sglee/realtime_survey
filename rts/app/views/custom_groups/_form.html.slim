@@ -1,0 +1,15 @@
+= form_for @custom_group do |f|
+  - if @custom_group.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@custom_group.errors.count, "error")} prohibited this custom_group from being saved:"
+      ul
+        - @custom_group.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :custom_id
+    = f.text_field :custom_id
+  .field
+    = f.label :code
+    = f.text_field :code
+  .actions = f.submit 'Save'

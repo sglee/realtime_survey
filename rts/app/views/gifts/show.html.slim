@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Gift no:
+  = @gift.gift_no
+p
+  strong Paper:
+  = @gift.paper_id
+p
+  strong Custom:
+  = @gift.custom_id
+
+= link_to 'Edit', edit_gift_path(@gift)
+'|
+= link_to 'Back', gifts_path

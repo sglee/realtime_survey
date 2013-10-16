@@ -1,5 +1,31 @@
 Rts::Application.routes.draw do
 
+  resources :custom_groups
+
+  resources :jobs
+
+  resources :gifts
+
+  resources :authorities
+
+  resources :managers
+
+  resources :customs
+
+  resources :custom_answers
+
+  resources :paper_histories
+
+  resources :question_types
+
+  resources :question_items
+
+  resources :directives
+
+  resources :papers
+
+  resources :mangers
+
   scope '/api' do
     resources :shares
     resources :groupinfo

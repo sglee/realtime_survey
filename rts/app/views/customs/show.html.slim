@@ -1,0 +1,42 @@
+p#notice = notice
+
+p
+  strong Custom:
+  = @custom.custom_id
+p
+  strong Pwd:
+  = @custom.pwd
+p
+  strong Hp:
+  = @custom.hp
+p
+  strong Reg date:
+  = @custom.reg_date
+p
+  strong Is finished:
+  = @custom.is_finished
+p
+  strong Email:
+  = @custom.email
+p
+  strong Is allowed:
+  = @custom.is_allowed
+p
+  strong Is member:
+  = @custom.is_member
+p
+  strong Job:
+  = @custom.job
+p
+  strong Age:
+  = @custom.age
+p
+  strong Sex:
+  = @custom.sex
+p
+  strong Job code:
+  = @custom.job_code
+
+= link_to 'Edit', edit_custom_path(@custom)
+'|
+= link_to 'Back', customs_path

@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Paper:
+  = @custom_answer.paper_id
+p
+  strong Directive no:
+  = @custom_answer.directive_no
+p
+  strong Custom:
+  = @custom_answer.custom_id
+p
+  strong Question no:
+  = @custom_answer.question_no
+p
+  strong Answer:
+  = @custom_answer.answer
+
+= link_to 'Edit', edit_custom_answer_path(@custom_answer)
+'|
+= link_to 'Back', custom_answers_path

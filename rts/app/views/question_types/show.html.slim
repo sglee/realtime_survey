@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Q type:
+  = @question_type.q_type
+p
+  strong Q type name:
+  = @question_type.q_type_name
+
+= link_to 'Edit', edit_question_type_path(@question_type)
+'|
+= link_to 'Back', question_types_path

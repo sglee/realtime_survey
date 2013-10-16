@@ -1,0 +1,27 @@
+h1 Listing custom_answers
+
+table
+  tr
+    th Paper
+    th Directive no
+    th Custom
+    th Question no
+    th Answer
+    th
+    th
+    th
+
+  - @custom_answers.each do |custom_answer|
+    tr
+      td = custom_answer.paper_id
+      td = custom_answer.directive_no
+      td = custom_answer.custom_id
+      td = custom_answer.question_no
+      td = custom_answer.answer
+      td = link_to 'Show', custom_answer
+      td = link_to 'Edit', edit_custom_answer_path(custom_answer)
+      td = link_to 'Destroy', custom_answer, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Custom answer', new_custom_answer_path

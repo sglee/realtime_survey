@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong User:
+  = @manager.user_id
+p
+  strong Pwd:
+  = @manager.pwd
+p
+  strong Name:
+  = @manager.name
+p
+  strong Hp:
+  = @manager.hp
+p
+  strong Email:
+  = @manager.email
+p
+  strong Auth code:
+  = @manager.auth_code
+p
+  strong Is use:
+  = @manager.is_use
+
+= link_to 'Edit', edit_manager_path(@manager)
+'|
+= link_to 'Back', managers_path

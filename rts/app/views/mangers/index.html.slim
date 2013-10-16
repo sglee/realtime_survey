@@ -1,0 +1,23 @@
+h1 Listing mangers
+
+table
+  tr
+    th Paper type
+    th Code
+    th Name
+    th
+    th
+    th
+
+  - @mangers.each do |manger|
+    tr
+      td = manger.paper_type
+      td = manger.code
+      td = manger.name
+      td = link_to 'Show', manger
+      td = link_to 'Edit', edit_manger_path(manger)
+      td = link_to 'Destroy', manger, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Manger', new_manger_path

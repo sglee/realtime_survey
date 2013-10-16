@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Question no:
+  = @question_item.question_no
+p
+  strong Paper:
+  = @question_item.paper_id
+p
+  strong Directive no:
+  = @question_item.directive_no
+p
+  strong Question:
+  = @question_item.question
+p
+  strong Img url:
+  = @question_item.img_url
+
+= link_to 'Edit', edit_question_item_path(@question_item)
+'|
+= link_to 'Back', question_items_path

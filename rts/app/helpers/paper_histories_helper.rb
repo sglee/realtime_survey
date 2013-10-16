@@ -1,0 +1,2 @@
+module PaperHistoriesHelper
+end

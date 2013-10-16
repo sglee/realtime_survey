@@ -11,6 +11,7 @@
 angular.module('rtsClientApp')
   .controller('NoJoinCtrl', function ($scope, $state, $location){
   	$scope.cancelAccess = function (){
+  	
       $location.path("/");
     }
     $scope.tryAccess = function (){

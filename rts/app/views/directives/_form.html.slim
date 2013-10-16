@@ -1,0 +1,21 @@
+= form_for @directive do |f|
+  - if @directive.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@directive.errors.count, "error")} prohibited this directive from being saved:"
+      ul
+        - @directive.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :paper_id
+    = f.text_field :paper_id
+  .field
+    = f.label :directive_no
+    = f.number_field :directive_no
+  .field
+    = f.label :content
+    = f.text_field :content
+  .field
+    = f.label :q_type
+    = f.text_field :q_type
+  .actions = f.submit 'Save'

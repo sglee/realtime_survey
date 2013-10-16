@@ -1,0 +1,30 @@
+= form_for @manager do |f|
+  - if @manager.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@manager.errors.count, "error")} prohibited this manager from being saved:"
+      ul
+        - @manager.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :user_id
+    = f.text_field :user_id
+  .field
+    = f.label :pwd
+    = f.text_field :pwd
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :hp
+    = f.text_field :hp
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :auth_code
+    = f.text_field :auth_code
+  .field
+    = f.label :is_use
+    = f.text_field :is_use
+  .actions = f.submit 'Save'

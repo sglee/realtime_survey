@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Custom:
+  = @custom_group.custom_id
+p
+  strong Code:
+  = @custom_group.code
+
+= link_to 'Edit', edit_custom_group_path(@custom_group)
+'|
+= link_to 'Back', custom_groups_path

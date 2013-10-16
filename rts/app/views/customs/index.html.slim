@@ -1,0 +1,41 @@
+h1 Listing customs
+
+table
+  tr
+    th Custom
+    th Pwd
+    th Hp
+    th Reg date
+    th Is finished
+    th Email
+    th Is allowed
+    th Is member
+    th Job
+    th Age
+    th Sex
+    th Job code
+    th
+    th
+    th
+
+  - @customs.each do |custom|
+    tr
+      td = custom.custom_id
+      td = custom.pwd
+      td = custom.hp
+      td = custom.reg_date
+      td = custom.is_finished
+      td = custom.email
+      td = custom.is_allowed
+      td = custom.is_member
+      td = custom.job
+      td = custom.age
+      td = custom.sex
+      td = custom.job_code
+      td = link_to 'Show', custom
+      td = link_to 'Edit', edit_custom_path(custom)
+      td = link_to 'Destroy', custom, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Custom', new_custom_path

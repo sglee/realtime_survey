@@ -1,0 +1,21 @@
+h1 Listing custom_groups
+
+table
+  tr
+    th Custom
+    th Code
+    th
+    th
+    th
+
+  - @custom_groups.each do |custom_group|
+    tr
+      td = custom_group.custom_id
+      td = custom_group.code
+      td = link_to 'Show', custom_group
+      td = link_to 'Edit', edit_custom_group_path(custom_group)
+      td = link_to 'Destroy', custom_group, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Custom group', new_custom_group_path

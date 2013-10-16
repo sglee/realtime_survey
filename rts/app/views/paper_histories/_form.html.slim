@@ -1,0 +1,21 @@
+= form_for @paper_history do |f|
+  - if @paper_history.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@paper_history.errors.count, "error")} prohibited this paper_history from being saved:"
+      ul
+        - @paper_history.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :user_id
+    = f.text_field :user_id
+  .field
+    = f.label :paper_id
+    = f.number_field :paper_id
+  .field
+    = f.label :start_date
+    = f.date_select :start_date
+  .field
+    = f.label :status
+    = f.text_field :status
+  .actions = f.submit 'Save'

@@ -1,23 +1,20 @@
-  <div class="column">
+  <div class="column" ng-controller="JoinCtrl">
     <div class="ui fluid inverted form segment">
       <h3 class="ui header">Register</h3>
       <div class="two fields">
+   
         <div class="field">
-          <label>First Name</label>
-          <input placeholder="First Name" type="text">
-        </div>
-        <div class="field">
-          <label>Last Name</label>
-          <input placeholder="Last Name" type="text">
+          <label>User Name</label>
+          <input placeholder="User Name" type="text" ng-model = "user.name">
         </div>
       </div>
       <div class="field">
-        <label>Username</label>
-        <input placeholder="Username" type="text">
+        <label>User Email</label>
+        <input placeholder="User Email" type="text" ng-model="user.email">
       </div>
       <div class="field">
         <label>Password</label>
-        <input type="password">
+        <input type="password" ng-model="user.password">
       </div>
       <div class="inline field">
         <div class="ui checkbox">
@@ -26,7 +23,10 @@
         </div>
         <label>I agree to the terms and conditions</label>
       </div>
-      <div class="ui blue submit button">Submit</div>
+      <div class="ui blue submit button" ng-click="signup()">Submit</div>
     </div>
   </div>
+    <div ng-show="user.errors">
+     <div class="header">{{ user.errors }}</div>
+    </div>
 </div>
