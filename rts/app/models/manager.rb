@@ -7,4 +7,8 @@ class Manager
   field :email, type: String
   field :auth_code, type: String
   field :is_use, type: String
+
+  has_many :paper
+  has_many :paper_history
+  belongs_to :authority
 end

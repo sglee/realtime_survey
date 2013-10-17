@@ -1,5 +1,9 @@
 Rts::Application.routes.draw do
 
+  resources :answers
+
+  resources :paper_types
+
   resources :custom_groups
 
   resources :jobs

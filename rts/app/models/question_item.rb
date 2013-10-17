@@ -5,4 +5,7 @@ class QuestionItem
   field :directive_no, type: Integer
   field :question, type: String
   field :img_url, type: String
+
+  belongs_to :directive
+  has_many :custom_answer
 end

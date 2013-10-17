@@ -1,0 +1,21 @@
+h1 Listing paper_types
+
+table
+  tr
+    th Code
+    th Name
+    th
+    th
+    th
+
+  - @paper_types.each do |paper_type|
+    tr
+      td = paper_type.code
+      td = paper_type.name
+      td = link_to 'Show', paper_type
+      td = link_to 'Edit', edit_paper_type_path(paper_type)
+      td = link_to 'Destroy', paper_type, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Paper type', new_paper_type_path

@@ -53,7 +53,6 @@ angular.module('rtsClientApp')
           //$scope.ngModel = data;
           //$scope.user.errors = data.info;
 
-
         }
      });
   };

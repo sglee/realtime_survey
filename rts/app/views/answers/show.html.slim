@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Paper:
+  = @answer.paper_id
+p
+  strong Directivce no:
+  = @answer.directivce_no
+p
+  strong Answer:
+  = @answer.answer
+
+= link_to 'Edit', edit_answer_path(@answer)
+'|
+= link_to 'Back', answers_path

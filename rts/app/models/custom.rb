@@ -12,4 +12,10 @@ class Custom
   field :age, type: String
   field :sex, type: String
   field :job_code, type: String
+
+  has_many :custom_answer
+  has_many :gift
+  has_many :custom_group
+
+  belongs_to :job
 end

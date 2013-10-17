@@ -8,4 +8,13 @@ class Paper
   field :question_type, type: String
   field :is_automatic, type: String
   field :in_use, type: String
+
+  belongs_to :groupinfo
+  belongs_to :paper_type
+  belongs_to :manager
+
+  has_many :paper_history
+  has_many :directive
+  has_many :gift
+
 end
