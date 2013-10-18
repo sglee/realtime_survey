@@ -14,10 +14,16 @@ before_filter :set_cors_headers
 before_filter :cors_preflight
 
 def set_cors_headers
-  headers['Access-Control-Allow-Origin'] = AppConfig.client['origin'] 
-  headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE,OPTIONS' 
-  headers['Access-Control-Allow-Headers'] = '*' 
+  #headers['Access-Control-Allow-Origin'] = AppConfig.client['origin'] 
+  #headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE,OPTIONS' 
+  #headers['Access-Control-Allow-Headers'] = '*' 
+  #headers['Access-Control-Max-Age'] = "3628800"
+
+  headers['Access-Control-Allow-Origin'] = '*'# need to be changed once it goes to production 'http://localhost:8080'
+  headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+  headers['Access-Control-Allow-Headers'] = '*, X-Requested-With, X-Prototype-Version, X-CSRF-Token, Content-Type'
   headers['Access-Control-Max-Age'] = "3628800"
+
 end
 
 def cors_preflight

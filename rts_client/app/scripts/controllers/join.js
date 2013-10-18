@@ -23,7 +23,6 @@ angular.module('rtsClientApp')
         // has been created: store the auth_token,
         // broadcast the 'authenticated' event across
         // our app, and redirect to '/'
-        alert('success');
         UserService.set( data.auth_token );
         $scope.$broadcast('event:authenticated');
         $location.path('/');
@@ -36,30 +35,22 @@ angular.module('rtsClientApp')
 
     // logOut
     $scope.logout = function() {
-       alert('auth_token:' + UserService.get());
+      // alert('auth_token:' + UserService.get());
     	// Post to our api sign_in route
       $http({
         url: '/api/users/sign_out',
-        method: 'POST',
+        method: 'DELETE',
         data: {auth_token: UserService.get()}
-
-      }).success(function(data) {
-        if (data.success) {
-
-          $location.path('/');
-          //$state.go('app.paperlist');
-        } else {
-          alert('logout failed');
-          //$scope.ngModel = data;
-          //$scope.user.errors = data.info;
-
-        }
+      }).success(function(result) {
+        $location.path('/');
+      }).error(function(result){
+        $scope.ngModel = data;
+        $scope.user.errors = data.info;
      });
   };
 
     // login action
     $scope.login = function() {
-
       // Post to our api sign_in route
       $http({
         url: '/api/users/sign_in',
@@ -70,16 +61,13 @@ angular.module('rtsClientApp')
           // If we get back an authenticated user (indicated by
           // the success in the response, not if the response 
           // returns 401 - so we can capture the user errors
-
           $scope.ngModel = data.data.data;
           UserService.set(data.data.auth_token);
-          alert('success');
-          //$location.path('/');
           $state.go('app.paperlist');
+
         } else {
           $scope.ngModel = data;
           $scope.user.errors = data.info;
-          
         }
       });
     };

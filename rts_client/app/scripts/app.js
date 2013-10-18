@@ -12,7 +12,6 @@ angular.module('rtsClientApp', ['ngResource', 'ui.router'])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     // default route
     $urlRouterProvider.otherwise("/");
-
     // welcome/join route
     $stateProvider
       .state('default', {
