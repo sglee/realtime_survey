@@ -1,5 +1,7 @@
 Rts::Application.routes.draw do
 
+  scope '/api' do
+
   resources :answers
 
   resources :paper_types
@@ -28,11 +30,11 @@ Rts::Application.routes.draw do
 
   resources :papers
 
-  resources :mangers
+  resources :mangers    
 
-  scope '/api' do
-    resources :shares
-    resources :groupinfo
+  resources :groupinfo
+
+  resources :shares
 
     devise_for :users,
       :controllers => {
@@ -44,6 +46,7 @@ Rts::Application.routes.draw do
     devise_scope :user do
       post '/check/is_user' => 'users/users#is_user', as: 'is_user'
       post '/current_user' => 'users/sessions#get_current_user'
+      
     end
   end
   get '/dashboard' => 'welcome#dashboard'
