@@ -10,5 +10,6 @@
 
 angular.module('rtsClientApp')
 	.controller('AppSurveySettinghCtrl', function($scope){
-
+        if(typeof $scope.authUserId === 'undefined' || $scope.author == null)
+        	return $location.path("/");
 	});

@@ -1,15 +1,29 @@
 class ManagersController < ApplicationController
   before_action :set_manager, only: [:show, :edit, :update, :destroy]
 
+  respond_to :json 
   # GET /managers
   # GET /managers.json
   def index
     @managers = Manager.all
+    render json: Manager.find(params[:id])
+    #render json: @managers
+    #@manager = Manager.where("user_id = ?", params[:user_id])
+    #render json: @manager
   end
 
   # GET /managers/1
   # GET /managers/1.json
   def show
+    # added json 
+    #render json: Manager.find(params[:id])
+    @manager = Manager.find(manager_params);
+    render json: @manager
+
+    #respond_to do |format|
+    #  format.html
+    #  format.json { head :no_content}
+    #end
   end
 
   # GET /managers/new
@@ -29,7 +43,8 @@ class ManagersController < ApplicationController
     respond_to do |format|
       if @manager.save
         format.html { redirect_to @manager, notice: 'Manager was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @manager }
+        format.json { render action: 'show', status: :created, location: @manager, 
+          json: { success: true } }
       else
         format.html { render action: 'new' }
         format.json { render json: @manager.errors, status: :unprocessable_entity }

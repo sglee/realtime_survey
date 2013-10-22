@@ -42,6 +42,7 @@ angular.module('rtsClientApp')
         method: 'DELETE',
         data: {auth_token: UserService.get()}
       }).success(function(result) {
+        $scope.authUserId = null;
         $location.path('/');
       }).error(function(result){
         $scope.ngModel = data;
@@ -63,9 +64,12 @@ angular.module('rtsClientApp')
           // returns 401 - so we can capture the user errors
           $scope.ngModel = data.data.data;
           UserService.set(data.data.auth_token);
+          debugger; 
+          $scope.authUserId = $scope.user.email; 
           $state.go('app.paperlist');
 
         } else {
+          $scope.authUserId = null;
           $scope.ngModel = data;
           $scope.user.errors = data.info;
         }

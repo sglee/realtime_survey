@@ -8,8 +8,10 @@
  */
 'use strict';
 
-angular.module('rtsClientApp', ['ngResource', 'ui.router'])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+angular.module('rtsClientApp', ['ngResource', 'ui.router', 'rails'])
+  .config(function ($httpProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
+     $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+
     // default route
     $urlRouterProvider.otherwise("/");
     // welcome/join route
@@ -95,11 +97,22 @@ angular.module('rtsClientApp', ['ngResource', 'ui.router'])
         templateUrl: '/views/app/survey/setting.html',
         controller: 'AppSurveySettingCtrl'
       })
-
       .state('app.notification', {
         url: '/app/notifications',
         templateUrl: '/views/app/notification.html',
         controller: 'AppNotificationCtrl'
+      })
+      .state('app.manager', {
+        url: '/manager',
+        templateUrl: '/views/app/manager.html',
+        controller: 'AppManagerCtrl',
+        abstract: true
+      })      
+      .state('app.manager.setting', {
+        url: '/:manger_id/setting',
+        //url: '/setting',
+        templateUrl: '/views/app/manager/setting.html',
+        controller: 'AppManagerSettingCtrl'
       })
       .state('app.setting', {
         url: '/app/setting',
@@ -107,7 +120,8 @@ angular.module('rtsClientApp', ['ngResource', 'ui.router'])
         controller: 'AppSettingCtrl'
       });
     
-    $locationProvider.html5Mode(true).hashPrefix('!');
+
+    //$locationProvider.html5Mode(true).hashPrefix('!');
 
     // layout마다 {name}-layout class를 body에 넣어줌
     function setBodyClass(className) {

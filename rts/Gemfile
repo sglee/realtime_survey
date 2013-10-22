@@ -31,6 +31,9 @@ gem 'omniauth-twitter'
 gem 'uuidtools'
 
 gem 'angularjs-rails', '>=1.2.0.rc1'
+
+gem 'angularjs-rails-resource', '~> 0.2.3'
+
 gem 'ngmin-rails'
 # For twitter's Bootstrap
 gem "bootstrap-sass-rails", "~> 3.0.0.3"
@@ -44,6 +47,9 @@ end
 
 # MongoDB Setting
 gem 'mongoid', git: 'git://github.com/mongoid/mongoid.git'
+gem 'bson'
+gem 'bson_ext'
+
 gem 'slim-rails'
  
 group :test do

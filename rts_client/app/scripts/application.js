@@ -6,7 +6,9 @@
 //= require angular-resource
 //= require angular-animate
 //= require turbolinks
+//= require angularjs-rails-resource
 //= require_tree .
+
 
 //= require foundation
 $(function(){ 

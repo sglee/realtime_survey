@@ -1,0 +1,48 @@
+<div class="main-content">
+  <div class="column" ng-controller="AppManagerCtrl">
+    <div class="ui fluid inverted form segment">
+      <h3 class="ui header">Register</h3>
+        <div class="field">
+          <label>User id</label>
+          <input placeholder="User id" type="text" ng-model = "manager.user_id">
+        </div>
+        <div class="field">
+          <label>User password</label>
+          <input placeholder="User Password" type="password" ng-model="manager.pwd">
+        </div>
+        <div class="field">
+          <label>Name</label>
+          <input type="text" ng-model="manager.name">
+        </div>
+        <div class="field">
+          <label>Hp</label>
+          <input type="text" placeholder="Input your phone number" ng-model="manager.hp">
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="text" placeholder="Input your email" ng-model="manager.email">
+        </div>
+        <div class="field">
+          <label>Authority Lelel</label>
+          <input type="text" placeholder="Select your authority Level" ng-model="manager.auth_code">
+        </div>
+        <div class="field">
+          <label>is use?</label>
+          <input type="text" plalaceholde="yes or no" ng-model="manager.is_use">
+        </div>
+        <div class="inline field">
+          <div class="ui checkbox">
+            <input type="checkbox" id="terms">
+            <label for="terms"></label>
+          </div>
+          <label>I agree to the terms and conditions</label>
+        </div>
+        <div class="ui blue submit button" ng-click="signup()">Submit</div>
+         <div class="ui blue submit button" ng-click="getManager()">Submit2</div>
+      </div>
+    </div>
+    <div ng-show="manager.errors">
+     <div class="header">{{ manager.errors }}</div>
+    </div>
+</div>
+</div>

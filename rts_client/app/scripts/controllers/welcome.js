@@ -10,6 +10,7 @@
 
 angular.module('rtsClientApp')
   .controller('WelcomeCtrl', function ($scope, $state) {
+    /*
     $scope.loginWithFacebook = function(){
       console.log("1");
       $state.go('app.my.survey');
@@ -35,4 +36,5 @@ angular.module('rtsClientApp')
       console.log("7");
       $state.go('app.my.survey');
     }
+    */
   });
