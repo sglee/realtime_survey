@@ -11,11 +11,12 @@
 angular.module('rtsClientApp')
 	.controller('AppSurveyPaperCtrl', ['$scope', '$location', 'Manager', function($scope, $location, Manager){
 
-       // if(typeof $scope.authUserId === 'undefined' || $scope.author == null)
+        // if(typeof $scope.authUserId === 'undefined' || $scope.author == null)
         //	return $location.path("/");
 
+        debugger;
 		$scope.searching = false; 
-		$scope.manager = Manager.get({name:'apples'});
+		$scope.manager = Manager.query({user_id:'red'});
 		$scope.manager.then(function(results){
 	    	debugger;
 	    	var testUser = 'redsoft';

@@ -38,7 +38,10 @@
           <label>I agree to the terms and conditions</label>
         </div>
         <div class="ui blue submit button" ng-click="signup()">Submit</div>
-         <div class="ui blue submit button" ng-click="getManager()">Submit2</div>
+         <div class="ui blue submit button" ng-click="getManager()">운영자 정보조회 테스트 </div>
+         <div ng-repeat="mems in manager">
+         			{{mems.user_id}}
+         </div>
       </div>
     </div>
     <div ng-show="manager.errors">

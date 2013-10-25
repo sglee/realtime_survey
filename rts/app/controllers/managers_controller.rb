@@ -6,7 +6,7 @@ class ManagersController < ApplicationController
   # GET /managers.json
   def index
     @managers = Manager.all
-    render json: Manager.find(params[:id])
+    #render json: Manager.all
     #render json: @managers
     #@manager = Manager.where("user_id = ?", params[:user_id])
     #render json: @manager
@@ -16,9 +16,20 @@ class ManagersController < ApplicationController
   # GET /managers/1.json
   def show
     # added json 
-    #render json: Manager.find(params[:id])
-    @manager = Manager.find(manager_params);
+    @managers = Manager.find(params[:id])
     render json: @manager
+
+    #@managers = Manager.where(:user_id => @user_id)
+    #render json: @manager
+
+    #respond_to do |format|
+      #format.html # show.html.erb
+     # format.json { render json: @managers }
+      #render json: @manager
+
+   # end
+
+    #render json: Manager.find(parms[:user_id])
 
     #respond_to do |format|
     #  format.html

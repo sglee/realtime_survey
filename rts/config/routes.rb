@@ -1,5 +1,10 @@
 Rts::Application.routes.draw do
 
+  #get "/managers(.:format)" => "managers#index"
+  get "/api/managers/:user_id" => "managers#show"
+    #get "/managers(.:format)" => "managers#index"
+  put "/api/managers/:id" => "managers#update"
+
   scope '/api' do
 
   resources :answers
@@ -36,6 +41,8 @@ Rts::Application.routes.draw do
 
   resources :shares
 
+
+
     devise_for :users,
       :controllers => {
         omniauth_callbacks: "users/omniauth_callbacks",
@@ -48,7 +55,10 @@ Rts::Application.routes.draw do
       post '/current_user' => 'users/sessions#get_current_user'
       
     end
+
   end
+
+
   get '/dashboard' => 'welcome#dashboard'
   root to: 'welcome#index'
 end
