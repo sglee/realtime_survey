@@ -52,8 +52,8 @@ angular.module('rtsClientApp')
     */
     $scope.getManager = function(){
       $scope.manager = {};
-    	$scope.manager = managerFactory.query({user_id: 'james555'}, function (data) {
-        console.log(data);
+    	$scope.manager = managerFactory.get({user_id: 'james'}, function (data) {
+        console.log('test---->' + data);
         alert(JSON.stringify(data));
           // test 
           $scope.manager.user_id = data.user_id;

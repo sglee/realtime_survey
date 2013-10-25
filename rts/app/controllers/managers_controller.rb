@@ -16,7 +16,7 @@ class ManagersController < ApplicationController
   # GET /managers/1.json
   def show
     # added json 
-    @managers = Manager.find(params[:id])
+    #@managers = Manager.where(user_id:params[:id]).first
     render json: @manager
 
     #@managers = Manager.where(:user_id => @user_id)
@@ -90,7 +90,7 @@ class ManagersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_manager
-      @manager = Manager.find(params[:id])
+      @manager = Manager.where(user_id:params[:id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

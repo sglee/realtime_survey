@@ -9,8 +9,8 @@ angular.module('rtsClientApp')
 			  query: {method:'GET', params:{user_id:'@user_id'}, isArray:true},
 			  post: {method:'POST'},
 			  update: {method:'PUT', params: {user_id: '@user_id'}},
-			  remove: {method:'DELETE'},
-			  delete: {method:'DELETE'}
+			  remove: {method:'DELETE'}
+			
 	});
 	  
 }) // angular-rails-resouce test ---> failed

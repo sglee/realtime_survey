@@ -1,9 +1,9 @@
 Rts::Application.routes.draw do
 
   #get "/managers(.:format)" => "managers#index"
-  get "/api/managers/:user_id" => "managers#show"
+  #get "/api/managers/:hp" => "managers#show"
     #get "/managers(.:format)" => "managers#index"
-  put "/api/managers/:id" => "managers#update"
+  #put "/api/managers/:hp" => "managers#update"
 
   scope '/api' do
 
