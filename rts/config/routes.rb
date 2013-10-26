@@ -1,5 +1,6 @@
 Rts::Application.routes.draw do
 
+
   #get "/managers(.:format)" => "managers#index"
   #get "/api/managers/:hp" => "managers#show"
     #get "/managers(.:format)" => "managers#index"
@@ -19,7 +20,7 @@ Rts::Application.routes.draw do
 
   resources :authorities
 
-  resources :managers
+  resources :managers, :id => /.*/
 
   resources :customs
 
@@ -35,13 +36,13 @@ Rts::Application.routes.draw do
 
   resources :papers
 
-  resources :mangers    
+  resources :manager, :id => /.*/
 
   resources :groupinfo
 
   resources :shares
 
-
+  #get "/manager/basicInfo" => 'manager#basicInfo'
 
     devise_for :users,
       :controllers => {

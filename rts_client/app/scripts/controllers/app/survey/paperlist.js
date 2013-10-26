@@ -9,7 +9,7 @@
 'use strict';
 
 angular.module('rtsClientApp')
-	.controller('AppSurveyPaperlistCtrl', function($scope, $state, $location){
+	.controller('AppSurveyPaperlistCtrl', function($scope, $state, $location, UserService){
 		$scope.paperlist = {};
 
 		$scope.paperlist = {

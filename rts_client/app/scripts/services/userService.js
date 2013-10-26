@@ -2,10 +2,11 @@
 
 angular.module('rtsClientApp')
 .service('UserInfo', function () {
-  // body...
+
 })
 .factory('UserService', function($http, $q) {
   var token = null,
+      user_id = null,
       currentUser;
  
   var tokenHandlers = {
@@ -19,6 +20,13 @@ angular.module('rtsClientApp')
       else {
         return token;
       }
+    },
+
+    setLoginInfo: function ($scope, userId) {
+      user_id = userId;
+    },
+    getLoginInfo: function ($scope) {
+      return user_id;
     },
 
     getCurrentUser: function() {

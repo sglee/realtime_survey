@@ -9,7 +9,7 @@
 'use strict';
 
 angular.module('rtsClientApp')
-  .controller('GlobalCtrl', function ($scope, $location, $state, Manager) {
+  .controller('GlobalCtrl', function ($scope, $location, $state, Manager, managerFactory) {
     $scope.$state = $state;
     $scope.$location = $location;
   });

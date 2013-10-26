@@ -1,5 +1,6 @@
 class Manager
   include Mongoid::Document
+
   field :user_id, type: String
   field :pwd, type: String
   field :name, type: String

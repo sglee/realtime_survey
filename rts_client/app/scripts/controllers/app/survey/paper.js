@@ -9,50 +9,12 @@
 'use strict';
 
 angular.module('rtsClientApp')
-	.controller('AppSurveyPaperCtrl', ['$scope', '$location', 'Manager', function($scope, $location, Manager){
+	.controller('AppSurveyPaperCtrl', ['$scope', '$location', 'UserService', function($scope, $location, UserService){
+        if(typeof $scope.authUserId === 'undefined' || $scope.author == null)
+        	$location.path("/");
+        //if(UserService.getLoginInfo() == null) {
+        //	$location.path("/");
+        //}
 
-        // if(typeof $scope.authUserId === 'undefined' || $scope.author == null)
-        //	return $location.path("/");
 
-        debugger;
-		$scope.searching = false; 
-		$scope.manager = Manager.query({user_id:'red'});
-		$scope.manager.then(function(results){
-	    	debugger;
-	    	var testUser = 'redsoft';
-	    	if(results != null){
-	    		debugger; 
-	    		var mng = results;
-	    		for(var i=0, len = mng.length; i < len; i++){
-	    			if(mng[i].name == testUser){
-	    				alert(mng[i].userId);
-	    				$scope.searching = true; 
-	    				//$scope.userId = mng[i].userId; 
-	    				return; 
-	    			}
-	    		}
-	    	}
-
-		}, function(error){
-			$scope.errorMsg = error;
-		});
-
-/*
-		Manager.get({name:'redsoft'}).then(function(manager){
-		});
-*/
-	
-	    // Find a single book and update it
-	    //Book.get(1234).then(function (book) {
-	    //    book.lastViewed = new Date();
-	    //    book.update();
-	    //});
-	    // Create a book and save it
-    	//new Book({title: 'Gardens of the Moon', author: 'Steven Erikson', isbn: '0-553-81957-7'}).create();
-		/*
-		$scope.managers = managerFactory.query({user_id: 'red'}).then(function(manager){
-			$scope.manager = manager;
-			alert($scope.manager.user_id);
-		});
-		*/
 	}]);

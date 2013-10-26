@@ -9,7 +9,7 @@
 'use strict';
 
 angular.module('rtsClientApp')
-  .controller('AppSettingCtrl', function ($location, $scope, $state, $http) {
+  .controller('AppSettingCtrl', function ($location, $scope, $state, $http, UserService) {
         if(typeof $scope.authUserId === 'undefined' || $scope.author == null)
         	return $location.path("/");
   });
