@@ -8,5 +8,5 @@ class CustomAnswer
 
   belongs_to :directive
   belongs_to :custom
-  belongs_to :question_item
+  belongs_to :questionitem
 end

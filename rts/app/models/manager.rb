@@ -9,7 +9,9 @@ class Manager
   field :auth_code, type: String
   field :is_use, type: String
 
+  has_many :groupinfo
   has_many :paper
-  has_many :paper_history
+  has_many :papertype
+  has_many :paperhistory
   belongs_to :authority
 end

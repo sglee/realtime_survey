@@ -9,12 +9,19 @@
 'use strict';
 
 angular.module('rtsClientApp')
-	.controller('AppSurveyPaperCtrl', ['$scope', '$location', 'UserService', function($scope, $location, UserService){
-        if(typeof $scope.authUserId === 'undefined' || $scope.author == null)
-        	$location.path("/");
-        //if(UserService.getLoginInfo() == null) {
+	.controller('AppSurveyPaperCtrl', function($scope, $location, UserService, groupInfoFactory){
+        
+        //if(typeof $scope.authUserId === 'undefined' || $scope.author == null)
         //	$location.path("/");
-        //}
+        if(UserService.getLoginInfo() == null) return $location.path("/");
 
+        $scope.$on("event:notifyGroup", function(event, data){
+        	$scope.errorGroup = data.message;
+        });
 
-	}]);
+        $scope.$on("event:notifyPaperType", function(event, data){
+        	$scope.errorPaperType = data.message;
+        });
+
+    
+	});

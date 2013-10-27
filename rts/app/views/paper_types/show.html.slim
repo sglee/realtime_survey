@@ -1,11 +1,14 @@
 p#notice = notice
 
 p
-  strong Code:
-  = @paper_type.code
+  strong Paper type code:
+  = @paper_type.paper_type_code
 p
   strong Name:
   = @paper_type.name
+p
+  strong User:
+  = @paper_type.user_id
 
 = link_to 'Edit', edit_paper_type_path(@paper_type)
 '|

@@ -1,6 +1,8 @@
 Rts::Application.routes.draw do
 
 
+
+
   #get "/managers(.:format)" => "managers#index"
   #get "/api/managers/:hp" => "managers#show"
     #get "/managers(.:format)" => "managers#index"
@@ -10,7 +12,7 @@ Rts::Application.routes.draw do
 
   resources :answers
 
-  resources :paper_types
+  resources :paper_types, :id => /.*/
 
   resources :custom_groups
 
@@ -38,7 +40,7 @@ Rts::Application.routes.draw do
 
   resources :manager, :id => /.*/
 
-  resources :groupinfo
+  resources :groupinfos, :id => /.*/
 
   resources :shares
 

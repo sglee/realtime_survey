@@ -7,9 +7,12 @@
           li = message
 
   .field
-    = f.label :code
-    = f.text_field :code
+    = f.label :paper_type_code
+    = f.text_field :paper_type_code
   .field
     = f.label :name
     = f.text_field :name
+  .field
+    = f.label :user_id
+    = f.text_field :user_id
   .actions = f.submit 'Save'

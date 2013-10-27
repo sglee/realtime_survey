@@ -1,6 +1,5 @@
-<div class="main-content">
-  <div>
-  <div class="ui form">
+<div class="main-content" ng-controller="AppSurveyPaperCtrl">
+  <div class="ui form" ng-controller="AppCodeManagerCtrl">
     <div class="ui info message">
       <div class="header">We had some issues</div>
       <ul class="list">
@@ -9,42 +8,40 @@
       </ul>
     </div>
     <!-- Group selection -->
-    <div>
     <div class="ui selection dropdown paper">
   	<input type="hidden" name="group">
   	<i class="dropdown icon"></i>
-	  	<div class="default text">그룹선</div>
+	  	<div class="default text">그룹선택</div>
 	  	<div class="menu">
-	    <div class="item" data-value="male">Java conference</div>
-	    <div class="item" data-value="female">Microsoft Conference</div>
+	    <div class="item" data-value="{{group.code}}" ng-repeat="group in groupinfo" >{{group.name}}</div> 
 	  	</div>
 	</div>
-	<div class="ui darkgray submit button"><i class="add icon"></i></div>
-	<div class="ui darkgray submit button"><i class="edit icon"></i></div>
-	<div class="ui darkgray submit button"><i class="remove icon"></i></div>
+	<div class="ui darkgray submit button" ng-click="add()">
+  <i class="add icon"></i></div>
+	<div class="ui darkgray submit button" ng-click="update()"><i class="edit icon"></i></div>
+	<div class="ui darkgray submit button" ng-click="delete()"><i class="remove icon"></i></div>
 
       <div class="field">
-        <input placeholder="그룹명을 추가해 주세요" type="text">
+        <input placeholder="그룹명을 추가해 주세요" type="text" ng-model="groupinfo.name">{{errorGroup}}
       </div>
-    </div>
+
     <!-- End of Group Selection-->
     <!-- Paper selection -->
     <div>
     <div class="ui selection dropdown paper">
-  	<input type="hidden" name="title">
+  	<input type="hidden" name="text" >
   	<i class="dropdown icon"></i>
 	  	<div class="default text">설문제목</div>
 	  	<div class="menu">
-	    <div class="item" data-value="male">Java survey</div>
-	    <div class="item" data-value="female">Microsoft survey</div>
+	    <div class="item" data-value="{{paper.paper_type_code}}" ng-repeat="paper in paper_type">{{paper.name}}</div>
 	  	</div>
 	</div>
-	<div class="ui darkgray submit button"><i class="add icon"></i></div>
-	<div class="ui darkgray submit button"><i class="edit icon"></i></div>
-	<div class="ui darkgray submit button"><i class="remove icon"></i></div>
+	<div class="ui darkgray submit button" ng-click="addPaperType()"><i class="add icon"></i></div>
+	<div class="ui darkgray submit button" ng-click="updatePaperType()"><i class="edit icon"></i></div>
+	<div class="ui darkgray submit button" ng-click="deletePaperType()"><i class="remove icon"></i></div>
 
       <div class="field">
-        <input placeholder="설문지 제목을 입력해 주세요." type="text">
+        <input placeholder="설문지 제목을 입력해 주세요." type="text" ng-model="paper_type.name">{{errorPaperType}}
       </div>
     </div>
     <!-- End of Paper Selection-->
@@ -53,10 +50,10 @@
     <div class="ui selection dropdown paper">
   	<input type="hidden" name="time">
   	<i class="dropdown icon"></i>
-	  	<div class="default text">설문시간 설정</div>
+	  	<div class="default text">제한시간선택</div>
 	  	<div class="menu">
-	    <div class="item" data-value="male">20</div>
-	    <div class="item" data-value="female">10</div>
+	    <div class="item" data-value="20">20</div>
+	    <div class="item" data-value="10">10</div>
 	  	</div>
 	</div>
 
@@ -149,5 +146,5 @@
     <div class="ui darkgray submit button"><i class="save icon"></i></div>
     <div class="ui darkgray submit button"><i class="remove icon"></i></div>
   </div>
-</div>
+
 </div>

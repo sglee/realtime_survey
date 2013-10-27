@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Code:
+  = @groupinfo.code
+p
+  strong Name:
+  = @groupinfo.name
+p
+  strong Is use:
+  = @groupinfo.is_use
+
+= link_to 'Edit', edit_groupinfo_path(@groupinfo)
+'|
+= link_to 'Back', groupinfos_path

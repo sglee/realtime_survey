@@ -6,6 +6,9 @@ angular.module('rtsClientApp')
     $scope.manager = {};
     $scope.manager.user_id = UserService.getLoginInfo();
 
+    $scope.surveyNavi = function(){
+      $state.go('app.paper');
+    };
     //--------------------------
     // 운영자 등록 
     //--------------------------
@@ -17,7 +20,7 @@ angular.module('rtsClientApp')
         url: '/api/managers',
         method: 'POST',
         data: { manager: $scope.manager }
-      }).success(function(data) {
+      }).success(function(data, status, header, config) {
         $state.go('app.paper');
       }).error(function(reason) {
       	alert('fail');

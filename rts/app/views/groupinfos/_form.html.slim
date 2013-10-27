@@ -1,0 +1,18 @@
+= form_for @groupinfo do |f|
+  - if @groupinfo.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@groupinfo.errors.count, "error")} prohibited this groupinfo from being saved:"
+      ul
+        - @groupinfo.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :code
+    = f.text_field :code
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :is_use
+    = f.text_field :is_use
+  .actions = f.submit 'Save'

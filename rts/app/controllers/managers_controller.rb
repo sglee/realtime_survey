@@ -30,16 +30,18 @@ class ManagersController < ApplicationController
   def create
     @manager = Manager.new(manager_params)
 
-    respond_to do |format|
+    #respond_to do |format|
       if @manager.save
-        format.html { redirect_to @manager, notice: 'Manager was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @manager, 
-          json: { success: true } }
+     #   format.html { redirect_to @manager, notice: 'Manager was successfully created.' }
+     #  format.json { render action: 'show', status: :created, location: @manager, 
+      #    json: { success: true } }
+        render json: @manager
       else
-        format.html { render action: 'new' }
-        format.json { render json: @manager.errors, status: :unprocessable_entity }
+        #format.html { render action: 'new' }
+        #format.json { render json: @manager.errors, status: :unprocessable_entity }
+        render json: @manager.errors
       end
-    end
+    #end
   end
 
   # PATCH/PUT /managers/1

@@ -1,0 +1,23 @@
+h1 Listing groupinfos
+
+table
+  tr
+    th Code
+    th Name
+    th Is use
+    th
+    th
+    th
+
+  - @groupinfos.each do |groupinfo|
+    tr
+      td = groupinfo.code
+      td = groupinfo.name
+      td = groupinfo.is_use
+      td = link_to 'Show', groupinfo
+      td = link_to 'Edit', edit_groupinfo_path(groupinfo)
+      td = link_to 'Destroy', groupinfo, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Groupinfo', new_groupinfo_path

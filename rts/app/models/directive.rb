@@ -6,10 +6,10 @@ class Directive
   field :q_type, type: String
 
   has_many :answer
-  has_many :question_item
-  has_many :custom_answer
+  has_many :questionitem
+  has_many :customanswer
   
   belongs_to :paper
-  belongs_to :question_type
+  belongs_to :questiontype
 
 end

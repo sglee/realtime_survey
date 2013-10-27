@@ -10,6 +10,9 @@
 
 angular.module('rtsClientApp')
   .controller('WelcomeCtrl', function ($scope, $state) {
+    $scope.user = {};
+    $scope.user.email = "lover@daum.net";
+    $scope.user.password = "sglee0415";
     /*
     $scope.loginWithFacebook = function(){
       console.log("1");
