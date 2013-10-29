@@ -1,9 +1,11 @@
 class Directive
   include Mongoid::Document
-  field :paper_id, type: String
-  field :directive_no, type: Integer
+  field :paper_id, type: Integer
+  #field :directive_no, type: Integer
   field :content, type: String
   field :q_type, type: String
+
+  auto_increment :directive_no
 
   has_many :answer
   has_many :questionitem

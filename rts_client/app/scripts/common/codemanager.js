@@ -10,11 +10,31 @@
 
 angular.module('rtsClientApp')
   .controller('AppCodeManagerCtrl', function ($location,$rootScope, $scope, $state, $http, groupInfoFactory, paperTypeFactory,UserService) {
-    
+
     $scope.groupinfo = {}; 
     $scope.paper_type = {};
     var userId = UserService.getLoginInfo();
     var userParam = {code:'', user_id: userId };
+
+
+/*
+        var items; 
+        $scope.groupinfo = groupInfoFactory.query(userParam,function(result){
+                items = $scope.items = result;
+        });
+  $scope.version2 = {
+    query: function (query) {
+      var data = {results: []};
+      angular.forEach(items, function(item, key){
+        if (query.term.toUpperCase() === item.text.substring(0, query.term.length).toUpperCase()) {
+          data.results.push(item);
+        }
+      });
+      query.callback(data);
+    }
+  };
+  */
+
     /*
     groupInfoFactory.query( function(result){
           if(result.user_id == null) return;
@@ -63,6 +83,21 @@ angular.module('rtsClientApp')
          // if(result.user_id == null) return;
          // $scope.paper_type = result || {};
         });
+
+        var result = $scope.paper_type;
+      /*
+        $scope.version2 = {
+          query: function (query) {
+            var data = {results: []};
+            angular.forEach(results, function(results, key){
+              if (query.term.toUpperCase() === results.name.substring(0, query.term.length).toUpperCase()) {
+                data.results.push(results);
+              }
+            });
+            query.callback(data);
+          }
+        };
+      */
       }).error(function(data,status,headers, config) {
         $scope.status = status; 
         alert('fail addGroup function');
@@ -95,6 +130,11 @@ angular.module('rtsClientApp')
     //------------------
     // 그룹코드 관리 
     //------------------
+    $scope.selectedGroup = function(selValue){
+      alert(selValue.code);
+    };
+
+
     $scope.getParams = function(){
       return {
         code: $scope.groupinfo.code,
@@ -123,9 +163,31 @@ angular.module('rtsClientApp')
 
         $scope.status = status;
         $scope.groupinfo = groupInfoFactory.query(function(result){
-          //if(result.user_id == null) return;
-          //$scope.groupinfo = result || {};
+
+       // $scope.groupinfo = groupInfoFactory.query(userParam,function(result){
+       //               items = $scope.items = result;
+       // });
         });
+
+        var result = $scope.groupinfo;
+       // $scope.groupinfo = groupInfoFactory.query(userParam,function(result){
+       //               items = $scope.items = result;
+       // });
+   
+   /*
+        $scope.version2 = {
+          query: function (query) {
+            var data = {results: []};
+            angular.forEach(results, function(results, key){
+              if (query.term.toUpperCase() === results.name.substring(0, query.term.length).toUpperCase()) {
+                data.results.push(results);
+              }
+            });
+            query.callback(data);
+          }
+        };
+*/       
+
       }).error(function(data,status,headers, config) {
         $scope.status = status; 
         alert('fail addGroup function');

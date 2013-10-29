@@ -1,22 +1,21 @@
-
 <div class="main-content" >
 <div class="ui form segment">
 <h3 class="ui black header">
   <div class="sub header">{{paperlist.groupName}}</div>
   <div class="circular ui dimgray button">{{paperlist.title}}</div>
 </h3>
-	<div class="ui divided selection list">
-	<ul class = "unstyled">
-	<span ng-repeat="paper in paperlist.items">
-	  <a class="item">
-	    <div class="ui {{paper.color}} horizontal label" ui-sref="app.question">{{paper.status}}</div>
-	     {{paper.num}}.{{paper.title}} 
-	  </a>
+        <div class="ui divided selection list">
+        <ul class = "unstyled">
+        <span ng-repeat="paper in paperlist.items">
+          <a class="item">
+            <div class="ui {{paper.color}} horizontal label" ui-sref="app.question">{{paper.status}}</div>
+             {{paper.num}}.{{paper.title}} 
+          </a>
 
-	  </span>
-	  </ul>
-	</div>
-	<div class="access-center">
+          </span>
+          </ul>
+        </div>
+        <div class="access-center">
       <a class="ui blue submit button" ng-click="back()">Back</a>
     </div>
 </div>

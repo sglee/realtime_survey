@@ -10,7 +10,6 @@ class ManagerController < ApplicationController
   # PATCH/PUT /managers/1
   # PATCH/PUT /managers/1.json
   def update
-
     respond_to do |format|
     #@manager = Manager.find(params[:id])
       #if @manager.update_attributes(manager_params)

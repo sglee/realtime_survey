@@ -49,7 +49,7 @@ end
 gem 'mongoid', git: 'git://github.com/mongoid/mongoid.git'
 gem 'bson'
 gem 'bson_ext'
-
+gem 'mongoid_auto_increment'
 gem 'slim-rails'
  
 group :test do

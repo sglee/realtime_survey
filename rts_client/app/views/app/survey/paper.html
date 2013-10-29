@@ -1,3 +1,5 @@
+
+
 <div class="main-content" ng-controller="AppSurveyPaperCtrl">
   <div class="ui form" ng-controller="AppCodeManagerCtrl">
     <div class="ui info message">
@@ -7,55 +9,47 @@
         <li>Please enter your last name</li>
       </ul>
     </div>
-    <!-- Group selection -->
-    <div class="ui selection dropdown paper">
-  	<input type="hidden" name="group">
-  	<i class="dropdown icon"></i>
-	  	<div class="default text">그룹선택</div>
-	  	<div class="menu">
-	    <div class="item" data-value="{{group.code}}" ng-repeat="group in groupinfo" >{{group.name}}</div> 
-	  	</div>
-	</div>
-	<div class="ui darkgray submit button" ng-click="add()">
-  <i class="add icon"></i></div>
-	<div class="ui darkgray submit button" ng-click="update()"><i class="edit icon"></i></div>
-	<div class="ui darkgray submit button" ng-click="delete()"><i class="remove icon"></i></div>
+    <div id="groupbox">
+    <!-- 그룹정보 추가 및 선택 -->
+      <select ui-select2 ng-model="selGroup" data-placeholder="Pick a group" ng-required="true">
+          <option value=""></option>
+          <option ng-repeat="group in groupinfo" value="{{group.code}}">{{group.name}}</option>
+      </select>     
+
+  	<div class="ui darkgray submit button" ng-click="add()">
+    <i class="add icon"></i></div>
+  	<div class="ui darkgray submit button" ng-click="update()"><i class="edit icon"></i></div>
+  	<div class="ui darkgray submit button" ng-click="delete()"><i class="remove icon"></i></div>
 
       <div class="field">
         <input placeholder="그룹명을 추가해 주세요" type="text" ng-model="groupinfo.name">{{errorGroup}}
       </div>
-
+    </div>
     <!-- End of Group Selection-->
-    <!-- Paper selection -->
-    <div>
-    <div class="ui selection dropdown paper">
-  	<input type="hidden" name="text" >
-  	<i class="dropdown icon"></i>
-	  	<div class="default text">설문제목</div>
-	  	<div class="menu">
-	    <div class="item" data-value="{{paper.paper_type_code}}" ng-repeat="paper in paper_type">{{paper.name}}</div>
-	  	</div>
-	</div>
+    <!-- 설문지 추가 및 선택 -->
+      <div id="paperbox" class="paperbox">
+      <select ui-select2 ng-model="selPaper" data-placeholder="Pick a group" ng-required="true">
+          <option value=""></option>
+          <option ng-repeat="paper in paper_type" value="{{paper.paper_type_code}}">{{paper.name}}</option>
+      </select>    
+
 	<div class="ui darkgray submit button" ng-click="addPaperType()"><i class="add icon"></i></div>
 	<div class="ui darkgray submit button" ng-click="updatePaperType()"><i class="edit icon"></i></div>
 	<div class="ui darkgray submit button" ng-click="deletePaperType()"><i class="remove icon"></i></div>
 
+
       <div class="field">
         <input placeholder="설문지 제목을 입력해 주세요." type="text" ng-model="paper_type.name">{{errorPaperType}}
       </div>
-    </div>
+
     <!-- End of Paper Selection-->
-    <!-- Time Limit selection -->
-    <div>
-    <div class="ui selection dropdown paper">
-  	<input type="hidden" name="time">
-  	<i class="dropdown icon"></i>
-	  	<div class="default text">제한시간선택</div>
-	  	<div class="menu">
-	    <div class="item" data-value="20">20</div>
-	    <div class="item" data-value="10">10</div>
-	  	</div>
-	</div>
+    <!-- 제한시간 선택 -->
+    <select ui-select2 ng-model="limitTime" data-placeholder="Pick a limit time">
+        <option value="0">제한시간선택</option>
+        <option value="10">10분</option>
+        <option value="20">20분</option>
+        <option value="30">30분</option>
+    </select>
 
 	<div class="ui toggle checkbox">
 	  <input type="checkbox" name="pet">
@@ -63,29 +57,26 @@
 	</div>
 	<label>자동실행 여부</label>	
 
-    <div class="ui selection dropdown paper">
-  	<input type="hidden" name="papertype">
-  	<i class="dropdown icon"></i>
-	  	<div class="default text">설문유형</div>
-	  	<div class="menu">
-	    <div class="item" data-value="male">Yes or No</div>
-	    <div class="item" data-value="female">Selection</div>
-	    <div class="item" data-value="female">Writing</div>
-	  	</div>
-	</div>
+    <!-- 설문유형 -->
+    <select ui-select2 ng-model="paperKind" data-placeholder="Pick a Paper type">
+        <option value="0">설문유형</option>
+        <option value="P001">설문조사</option>
+        <option value="P002">평가</option>
+    </select>
+  </div>
+
     </div>
-    <!-- End of Time Limit Selection-->
    <!-- Directive text selection -->
     <div>
-    <div class="ui selection dropdown paper">
-  	<input type="hidden" name="directive">
-  	<i class="dropdown icon"></i>
-	  	<div class="default text">지시문 선택</div>
-	  	<div class="menu">
-	    <div class="item" data-value="male">1. 본세미나는 유익했습니까?</div>
-	    <div class="item" data-value="female">2. 가장 흥미있었던 세션은 무엇입니까?</div>
-	  	</div>
-	</div>
+
+    <div id = "directive">
+    <!-- 설문유형 -->
+    <select ui-select2 ng-model="paperDirectives" data-placeholder="지시문 선택">
+        <option value="0">설문유형</option>
+        <option value="P001">설문조사</option>
+        <option value="P002">평가</option>
+    </select>
+
 	<div class="ui darkgray submit button"><i class="add icon"></i></div>
 	<div class="ui darkgray submit button"><i class="edit icon"></i></div>
 	<div class="ui darkgray submit button"><i class="remove icon"></i></div>
@@ -93,7 +84,7 @@
       <div class="field">
         <input placeholder="지시문을 입력해 주세요" type="text">
       </div>
-    </div>
+
     <!-- End of Directive text Selection-->   
    <!-- Answer type selection -->
     <div>
@@ -117,8 +108,10 @@
 	  	</div>
 	</div>
     </div>
+  </div>
     <!-- End of Answer type Selection--> 
     <!-- answer -->
+  <div id="answer">
      <div class="field">
         <input placeholder="설문문항에 대한 정답을 입력해 주세요." type="text">
       </div>    
@@ -139,6 +132,7 @@
      <div class="field">
         <input placeholder="설문문항에 대한 선택 지문를 작성해 주세요" type="text">
       </div>    
+    </div>
     <!-- End of writting question area -->
     <div class="ui darkgray submit button">8902</div>
     <div class="ui red submit button">Start</div>
@@ -146,5 +140,6 @@
     <div class="ui darkgray submit button"><i class="save icon"></i></div>
     <div class="ui darkgray submit button"><i class="remove icon"></i></div>
   </div>
-
 </div>
+
+

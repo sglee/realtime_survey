@@ -8,8 +8,9 @@
  */
 'use strict';
 
-angular.module('rtsClientApp', ['ngResource', 'ui.router', 'rails'])
+angular.module('rtsClientApp', ['ngResource', 'ui.router', 'rails', 'ui.select2'])
   .config(function ($httpProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
+     
      $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 
     // default route

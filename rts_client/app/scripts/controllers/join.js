@@ -12,6 +12,7 @@ angular.module('rtsClientApp')
   .controller('JoinCtrl', function ($location, $scope, $state, $http, UserInfo, UserService) {
   	//alert('user->' + $scope.user.email + "pwd: ->" + $scope.user.password);
     // Signup action
+
     $scope.signup = function() {
       debugger;
       $http({
