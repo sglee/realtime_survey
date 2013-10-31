@@ -26,39 +26,44 @@ class PaperHistoriesController < ApplicationController
   def create
     @paper_history = PaperHistory.new(paper_history_params)
 
-    respond_to do |format|
+    #respond_to do |format|
       if @paper_history.save
-        format.html { redirect_to @paper_history, notice: 'Paper history was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @paper_history }
+    #    format.html { redirect_to @paper_history, notice: 'Paper history was successfully created.' }
+    #    format.json { render action: 'show', status: :created, location: @paper_history }
+         render json: @paper_history
       else
-        format.html { render action: 'new' }
-        format.json { render json: @paper_history.errors, status: :unprocessable_entity }
+    #    format.html { render action: 'new' }
+    #    format.json { render json: @paper_history.errors, status: :unprocessable_entity }
+         render json: paper_history.errors, status: :unprocessable_entity
       end
-    end
+    #end
   end
 
   # PATCH/PUT /paper_histories/1
   # PATCH/PUT /paper_histories/1.json
   def update
-    respond_to do |format|
+    #respond_to do |format|
       if @paper_history.update(paper_history_params)
-        format.html { redirect_to @paper_history, notice: 'Paper history was successfully updated.' }
-        format.json { head :no_content }
+     #   format.html { redirect_to @paper_history, notice: 'Paper history was successfully updated.' }
+     #   format.json { head :no_content }
+         render json: @paper_history
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @paper_history.errors, status: :unprocessable_entity }
+      #  format.html { render action: 'edit' }
+      # format.json { render json: @paper_history.errors, status: :unprocessable_entity }
+         render json: @paper_history.errors, status: :unprocessable_entity
       end
-    end
+    #end
   end
 
   # DELETE /paper_histories/1
   # DELETE /paper_histories/1.json
   def destroy
     @paper_history.destroy
-    respond_to do |format|
-      format.html { redirect_to paper_histories_url }
-      format.json { head :no_content }
-    end
+    render @paper_history
+    #respond_to do |format|
+    #  format.html { redirect_to paper_histories_url }
+    #  format.json { head :no_content }
+    #end
   end
 
   private

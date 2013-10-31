@@ -9,21 +9,172 @@
 'use strict';
 
 angular.module('rtsClientApp')
-.controller('AppSurveyPaperCtrl', function($scope, $location, UserService, groupInfoFactory){
-        
-       //$('.ui.selection.dropdown.paper')
-       // .dropdown();
+.controller('AppSurveyPaperCtrl', function($scope, $location, $state, $http, UserService, PaperService, 
+    groupInfoFactory, paperTypeFactory, paperFactory, paperDirectFactory, questionItemsFactory){
 
-        //if(typeof $scope.authUserId === 'undefined' || $scope.author == null)
-        //	$location.path("/");
-        if(UserService.getLoginInfo() == null) return $location.path("/");
-/*
-        $scope.$on("event:notifyGroup", function(event, data){
-        	$scope.errorGroup = data.message;
-        });
+    if(UserService.getLoginInfo() == null) return $location.path("/");  
+    //if(typeof $scope.authUserId === 'undefined' || $scope.author == null)
+    //  $location.path("/");
+    //$location,$rootScope, $scope, $state, $http,
 
-        $scope.$on("event:notifyPaperType", function(event, data){
-        	$scope.errorPaperType = data.message;
-        });
-*/
+    $scope.$on("event:notifyGroup", function(event, data){
+          //$scope.errorGroup = data.message;
+    });
+
+    $scope.$on("event:notifyPaperType", function(event, data){
+          //$scope.errorPaperType = data.message;
+          // 두번 호출되는 현상 
+          //$scope.addPapers();
+    });
+
+
+    $scope.papers = {}; // 설문객체
+    $scope.directives = {} // 서버에서 얻어온  지시문정보
+    $scope.papersDirect = {} // UI 설정정보  
+    $scope.myPaperId = "";
+    $scope.questionTitle = ""; // 질의문
+    $scope.questionItems = {}; // 질의문에 대한 선택지문 
+
+    $scope.selectedPaperDirectives = null; // 선택된 지시문
+
+    //--------------------------
+    // 설문지 정보
+    //--------------------------
+    $scope.getPapersParams = function () {
+       return { paper_id : $scope.papers.paper_id,
+                paper_type_code : $scope.papers.paperTypeCode,
+                group_code : $scope.papers.groupCode,
+                limit_time : $scope.papers.limit_time,
+                user_id : UserService.getLoginInfo(),
+                question_type : $scope.papers.questionType,
+                is_automatic : "N", 
+                in_use : "Y"
+       };
+    };      
+    //--------------------------
+    // 설문등록
+    //--------------------------
+    $scope.addPapers = function() {
+        $scope.papers.is_use = "Y";
+         // managerFactory.update({manager: $scope.manager});
+        $http({
+            url: '/api/papers',
+            method: 'POST',
+            data: { paper:  $scope.getPapersParams() }
+          }).success(function(data, status, header, config) {
+            debugger;
+            //$scope.papers = data || {};
+            $scope.myPaperId = data.paper_id;
+          }).error(function(reason) {
+            alert('fail');
+          });
+    };
+    //------------------------------
+    // 설문지 조회
+    //------------------------------
+    $scope.getPapers = function(){
+      //$scope.papers = {};
+      var userId = UserService.getLoginInfo($scope);
+      debugger;
+      if(userId == null) return null; 
+      paperFactory.get({paper_id: $scope.papers.paper_id }, 
+        function (data) {
+          $scope.papers = data || {};   
+        }, function (error) {
+          alert(error);
+      });
+    };   
+
+
+    //--------------------------
+    // 지시문정보 
+    // paper_id, :directive_no, :content, :q_type
+    //--------------------------
+    $scope.getDirectivesParams = function () {
+       return { paper_id : $scope.myPaperId ,
+                directive_no : $scope.papersDirect.directive_no,
+                
+                content : $scope.papersDirect.contents,
+                q_type : $scope.papersDirect.questionType
+       };
+    };       
+
+    //------------------------------
+    // 지시문 등록 
+    // 설문번호와 지시문 조건으로 한번 더 조회
+    //
+    //------------------------------
+    $scope.addDirective = function() {
+
+        $http({
+            url: '/api/directives',
+            method: 'POST',
+            data: { directive:  $scope.getDirectivesParams() }
+          }).success(function(data, status, header, config) {
+            debugger;
+            $scope.papersDirect = $scope.getDirectives(data);
+          }).error(function(reason) {
+            alert('fail');
+          });
+    };
+
+    //------------------------------
+    // 지시문 조회
+    //------------------------------
+    $scope.getDirectives = function(pdata){
+      debugger;
+      var userId = UserService.getLoginInfo($scope);
+      if(userId == null) return null; 
+
+      paperDirectFactory.query( 
+        function (data) {
+          return $scope.papersDirect = data || {};   
+        }, function (error) {
+          alert(error);
+      });
+    };   
+
+    $scope.updateDirective = function() {
+
+    };
+    $scope.deleteDirective = function() {
+
+    };
+
+    //------------------------------
+    // 질문등록관련 데이터변수 
+    // 설문번호와 지시문 조건으로 한번 더 조회
+    // :question_no, :paper_id, :directive_no, :question, :img_url
+    //------------------------------
+    $scope.getQItemParams = function (argument) {
+      return {  question_no : $scope.questionItems.question_no,
+                paper_id : $scope.myPaperId,
+                directive_no : $scope.papersDirect.directive_no,
+                question : $scope.questionItems.questionTitle,
+                img_url : ""
+              };
+    };
+    
+    $scope.addQuestionItem = function() {
+
+        $http({
+            url: '/api/question_items',
+            method: 'POST',
+            data: { question_item:  $scope.getQItemParams() }
+          }).success(function(data, status, header, config) {
+              // 현재 등록된 정보를 얻어
+              questionItemsFactory.query({directive_no:Number($scope.papersDirect.directive_no)},
+              function(data){
+                return $scope.questionItems = data || {};
+            })
+          }).error(function(reason) {
+            alert('fail:' + reason);
+          });
+    };
+
+    // 설문리스트 페이지로 이동하기 
+    $scope.goQuestionList = function(){
+      $state.go('app.paperlist');
+    };
+
 });

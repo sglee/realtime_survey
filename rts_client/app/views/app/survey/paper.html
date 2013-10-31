@@ -11,12 +11,12 @@
     </div>
     <div id="groupbox">
     <!-- 그룹정보 추가 및 선택 -->
-      <select ui-select2 ng-model="selGroup" data-placeholder="Pick a group" ng-required="true">
+      <select ui-select2 ng-model="papers.groupCode" data-placeholder="그룹선택" ng-required="true">
           <option value=""></option>
           <option ng-repeat="group in groupinfo" value="{{group.code}}">{{group.name}}</option>
       </select>     
 
-  	<div class="ui darkgray submit button" ng-click="add()">
+  	<div class="ui red submit button" ng-click="add()">
     <i class="add icon"></i></div>
   	<div class="ui darkgray submit button" ng-click="update()"><i class="edit icon"></i></div>
   	<div class="ui darkgray submit button" ng-click="delete()"><i class="remove icon"></i></div>
@@ -28,23 +28,22 @@
     <!-- End of Group Selection-->
     <!-- 설문지 추가 및 선택 -->
       <div id="paperbox" class="paperbox">
-      <select ui-select2 ng-model="selPaper" data-placeholder="Pick a group" ng-required="true">
+      <select ui-select2 ng-model="papers.paperTypeCode" data-placeholder="설문제목 선택" ng-required="true">
           <option value=""></option>
           <option ng-repeat="paper in paper_type" value="{{paper.paper_type_code}}">{{paper.name}}</option>
       </select>    
 
-	<div class="ui darkgray submit button" ng-click="addPaperType()"><i class="add icon"></i></div>
+	<div class="ui red submit button" ng-click="addPaperType()"><i class="add icon"></i></div>
 	<div class="ui darkgray submit button" ng-click="updatePaperType()"><i class="edit icon"></i></div>
 	<div class="ui darkgray submit button" ng-click="deletePaperType()"><i class="remove icon"></i></div>
 
-
-      <div class="field">
+  <div class="field">
         <input placeholder="설문지 제목을 입력해 주세요." type="text" ng-model="paper_type.name">{{errorPaperType}}
-      </div>
+   </div>
 
     <!-- End of Paper Selection-->
     <!-- 제한시간 선택 -->
-    <select ui-select2 ng-model="limitTime" data-placeholder="Pick a limit time">
+    <select ui-select2 ng-model="papers.limit_time" data-placeholder="풀이시간 선택 ">
         <option value="0">제한시간선택</option>
         <option value="10">10분</option>
         <option value="20">20분</option>
@@ -55,91 +54,78 @@
 	  <input type="checkbox" name="pet">
 	  <label></label>
 	</div>
-	<label>자동실행 여부</label>	
+  <!--<button button-toggle="assignableModelExpression">My button</button>-->
+	<label>자동실행</label>	
 
     <!-- 설문유형 -->
-    <select ui-select2 ng-model="paperKind" data-placeholder="Pick a Paper type">
+    <select ui-select2 ng-model="papers.questionType" data-placeholder="설문유형 선택">
         <option value="0">설문유형</option>
         <option value="P001">설문조사</option>
         <option value="P002">평가</option>
     </select>
+      <div class="ui red submit button" ng-click="addPapers()"><i class="save icon"></i></div>
   </div>
 
-    </div>
    <!-- Directive text selection -->
-    <div>
-
     <div id = "directive">
     <!-- 설문유형 -->
-    <select ui-select2 ng-model="paperDirectives" data-placeholder="지시문 선택">
-        <option value="0">설문유형</option>
-        <option value="P001">설문조사</option>
-        <option value="P002">평가</option>
-    </select>
+      <select ui-select2 ng-model="papersDirect.directive_no" data-placeholder="지시문 선택" ng-required="true">
+          <option value=""></option>
+          <option ng-repeat="directive in papersDirect" value="{{directive.directive_no}}">{{directive.content}}</option>
+      </select>       
 
-	<div class="ui darkgray submit button"><i class="add icon"></i></div>
-	<div class="ui darkgray submit button"><i class="edit icon"></i></div>
-	<div class="ui darkgray submit button"><i class="remove icon"></i></div>
+	<div class="ui red submit button" ng-click="addDirective()"><i class="add icon"></i></div>
+	<div class="ui darkgray submit button" ng-click="updateDirective()"><i class="edit icon"></i></div>
+	<div class="ui darkgray submit button" ng-click="delDirective()"><i class="remove icon"></i></div>
 
       <div class="field">
-        <input placeholder="지시문을 입력해 주세요" type="text">
+        <input placeholder="지시문을 입력해 주세요" type="text" ng-model="papersDirect.contents">
       </div>
 
     <!-- End of Directive text Selection-->   
    <!-- Answer type selection -->
-    <div>
-    <div class="ui selection dropdown paper">
-  	<input type="hidden" name="answertype">
-  	<i class="dropdown icon"></i>
-	  	<div class="default text">답변유형선택</div>
-	  	<div class="menu">
-	    <div class="item" data-value="male">20</div>
-	    <div class="item" data-value="female">10</div>
-	  	</div>
-	</div>
-    <div class="ui selection dropdown paper">
-  	<input type="hidden" name="questioncount">
-  	<i class="dropdown icon"></i>
-	  	<div class="default text">설문항목수</div>
-	  	<div class="menu">
-	    <div class="item" data-value="male">1</div>
-	    <div class="item" data-value="female">2</div>
-	    <div class="item" data-value="female">10</div>
-	  	</div>
-	</div>
-    </div>
+
+    <!-- 답변유형 -->
+    <select ui-select2 ng-model="papersDirect.questionType" data-placeholder="답변유형선택">
+        <option value="0">답변유형</option>
+        <option value="S001">선택형</option>
+        <option value="S002">OX</option>
+        <option value="S003">서술형</option>
+    </select>
+
   </div>
     <!-- End of Answer type Selection--> 
     <!-- answer -->
   <div id="answer">
-     <div class="field">
-        <input placeholder="설문문항에 대한 정답을 입력해 주세요." type="text">
-      </div>    
-    <!-- End of answer -->
-    <!-- writting question area -->
-    	<div class="ui darkgray submit button"><i class="add icon"></i></div>
-	<div class="ui darkgray submit button"><i class="edit icon"></i></div>
-	<div class="ui darkgray submit button"><i class="remove icon"></i></div>
-    <div class="row">
+      <div class="row">
         <div class="column">
-    		<div class="ui ribbon label">설문별 선택문항 작성하기</div>
-    		<p>1. 본 세미나가 유익했습니까?</p>
-    		<p>a. 매우만족 </p>
-    		<p>b. 보통 </p>
-    		<p>c. 불만 </p>
-    	</div>
-    </div>
+        <div class="ui ribbon label">설문별 선택문항 작성하기</div>
+      </div>
+      <br>
+    </div>        
+    <!-- writting question area -->
+      <div class="ui red submit button" ng-click="addQuestionItem()"><i class="add icon"></i></div>
+      <div class="ui darkgray submit button" ng-click="updateQuestionItem()"><i class="edit icon"></i></div>
+      <div class="ui darkgray submit button" ng-click="delQuestionItem()"><i class="remove icon"></i></div>
+
      <div class="field">
-        <input placeholder="설문문항에 대한 선택 지문를 작성해 주세요" type="text">
+        <input placeholder="설문문항에 대한 선택 지문를 작성해 주세요." type="text" ng-model="questionItems.questionTitle">
+      </div>    
+      <!-- 설문작성 리스트 --> 
+        <p>[질의]{{papersDirect.contents}}</p>
+    		<p ng-repeat="item in questionItems">{{item.question}}</p>
+
+     <div class="field">
+        <input placeholder="해당 지문에 대한 정답을 작성해 주세요" type="text" ng-model="questionTitle">
       </div>    
     </div>
     <!-- End of writting question area -->
-    <div class="ui darkgray submit button">8902</div>
-    <div class="ui red submit button">Start</div>
+    <div class="ui darkgray submit button" ng-click="goQuestionList()">{{myPaperId}}</div>
+    <div class="ui red submit button"  ng-click="goQuestionList()">Start</div>
     <div class="ui darkgray submit button">Preview</div>
     <div class="ui darkgray submit button"><i class="save icon"></i></div>
     <div class="ui darkgray submit button"><i class="remove icon"></i></div>
-  </div>
-</div>
 
+</div>
+</div>
 

@@ -14,8 +14,9 @@ class Paper
   belongs_to :groupinfo
   belongs_to :papertype
   belongs_to :manager
-
-  has_many :paperhistory
+  
+  # error ?
+  #has_many :paperhistory 
   has_many :directive
   has_many :gift
 

@@ -1,6 +1,7 @@
 class DirectivesController < ApplicationController
-  #before_action :set_directive, only: [:show, :edit, :update, :destroy]
-  before_action :set_directive, except: [:index, :create]
+  before_action :set_directive, only: [:edit, :update, :destroy]
+  #before_action :set_directive, except: [:index, :create]
+  before_action :set_alldirective, only: [:show]
 
   # GET /directives
   # GET /directives.json
@@ -11,6 +12,7 @@ class DirectivesController < ApplicationController
   # GET /directives/1
   # GET /directives/1.json
   def show
+    render json: @directive
   end
 
   # GET /directives/new
@@ -37,7 +39,7 @@ class DirectivesController < ApplicationController
     #    format.json { render json: @directive.errors, status: :unprocessable_entity }
           render json: @directive.errors, status: :unprocessable_entity
       end
-    end
+    #end
   end
 
   # PATCH/PUT /directives/1
@@ -72,6 +74,10 @@ class DirectivesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_directive
       @directive = Directive.find(params[:id])
+    end
+
+   def set_alldirective
+       @directive = Directive.where(paper_id:params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

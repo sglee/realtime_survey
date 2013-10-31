@@ -2,7 +2,6 @@
 
 angular.module('rtsClientApp')
   .controller('AppManagerCtrl', function ($location, $scope, $state, $http, UserService, managerFactory, managerBasicFactory) {
-  debugger;
     $scope.manager = {};
     $scope.manager.user_id = UserService.getLoginInfo();
 
@@ -76,8 +75,7 @@ angular.module('rtsClientApp')
           if(data.user_id == null )
             $scope.manager.user_id = userId;
           else{
-            $scope.manager = data || {};
-         
+            $scope.manager = data || {};   
           }
         }, function (error) {
             console.log(error)

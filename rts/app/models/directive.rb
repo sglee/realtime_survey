@@ -8,8 +8,8 @@ class Directive
   auto_increment :directive_no
 
   has_many :answer
-  has_many :questionitem
-  has_many :customanswer
+  #has_many :questionitem
+  #has_many :customanswer
   
   belongs_to :paper
   belongs_to :questiontype

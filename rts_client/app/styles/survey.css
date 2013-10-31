@@ -48,29 +48,28 @@
 
 #paperbox{
 	margin-top:10px;
-	background: #62626D;
+	background: #2C7886;
 	border-radius: 4px;
 	padding: 4px;
 }
 
 #groupbox{
 
-	background: #62626D;
+	background: #2C7886;
 	border-radius: 4px;
 	padding: 4px;	
 }
 
 #directive{
     margin-top: 10px;
-	background: #62626D;
+	background: #2C7886;
 	border-radius: 4px;
 	padding: 4px;	
 }
 #answer{
     margin-top: 10px;
-	background: #62626D;
+	background: #2C7886;
 	border-radius: 4px;
 	padding: 4px;	
 }
-
 

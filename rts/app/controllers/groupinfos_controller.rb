@@ -38,7 +38,7 @@ class GroupinfosController < ApplicationController
       else
         #format.html { render action: 'new' }
         #format.json { render json: @groupinfo.errors, status: :unprocessable_entity }
-        render json: @groupinfo.errors
+        render json: @groupinfo.errors, status: :unprocessable_entity
       end
     #end
   end
@@ -77,7 +77,7 @@ class GroupinfosController < ApplicationController
     end
 
     def set_groupShow
-      @groupinfo = Groupinfo.where(user_id:params[:id])      
+      @groupinfo = Groupinfo.where(user_id:params[:id])     
     end
 
     def set_update

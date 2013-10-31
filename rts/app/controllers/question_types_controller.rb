@@ -1,6 +1,7 @@
 class QuestionTypesController < ApplicationController
   before_action :set_question_type, only: [:show, :edit, :update, :destroy]
 
+  respond_to json:
   # GET /question_types
   # GET /question_types.json
   def index
@@ -26,38 +27,43 @@ class QuestionTypesController < ApplicationController
   def create
     @question_type = QuestionType.new(question_type_params)
 
-    respond_to do |format|
+    #respond_to do |format|
       if @question_type.save
-        format.html { redirect_to @question_type, notice: 'Question type was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @question_type }
+    #    format.html { redirect_to @question_type, notice: 'Question type was successfully created.' }
+    #    format.json { render action: 'show', status: :created, location: @question_type }
+        render json: @question_type
       else
-        format.html { render action: 'new' }
-        format.json { render json: @question_type.errors, status: :unprocessable_entity }
+    #    format.html { render action: 'new' }
+    #    format.json { render json: @question_type.errors, status: :unprocessable_entity }
+        render json: @question_type
       end
-    end
+    #end
   end
 
   # PATCH/PUT /question_types/1
   # PATCH/PUT /question_types/1.json
   def update
-    respond_to do |format|
+    #respond_to do |format|
       if @question_type.update(question_type_params)
-        format.html { redirect_to @question_type, notice: 'Question type was successfully updated.' }
-        format.json { head :no_content }
+    #    format.html { redirect_to @question_type, notice: 'Question type was successfully updated.' }
+    #    format.json { head :no_content }
+         render json: @question_type
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @question_type.errors, status: :unprocessable_entity }
+    #    format.html { render action: 'edit' }
+    #    format.json { render json: @question_type.errors, status: :unprocessable_entity }
+         render json: @question_type
       end
-    end
+    #end
   end
 
   # DELETE /question_types/1
   # DELETE /question_types/1.json
   def destroy
     @question_type.destroy
-    respond_to do |format|
-      format.html { redirect_to question_types_url }
-      format.json { head :no_content }
+    render json: { head :no_content }
+    #respond_to do |format|
+    #  format.html { redirect_to question_types_url }
+    #  format.json { head :no_content }
     end
   end
 

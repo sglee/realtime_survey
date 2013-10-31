@@ -9,5 +9,5 @@ class QuestionItem
   auto_increment :question_no
 
   belongs_to :directive
-  has_many :customanswer
+  #has_many :customanswer
 end

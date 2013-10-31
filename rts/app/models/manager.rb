@@ -11,7 +11,9 @@ class Manager
 
   has_many :groupinfo
   has_many :paper
-  has_many :papertype
-  has_many :paperhistory
+
+  # error ?
+  #has_many :papertype
+  #has_many :paperhistory
   belongs_to :authority
 end

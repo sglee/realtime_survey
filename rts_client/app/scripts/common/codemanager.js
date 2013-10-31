@@ -9,14 +9,16 @@
 'use strict';
 
 angular.module('rtsClientApp')
-  .controller('AppCodeManagerCtrl', function ($location,$rootScope, $scope, $state, $http, groupInfoFactory, paperTypeFactory,UserService) {
+  .controller('AppCodeManagerCtrl', function ($location,$rootScope, $scope, $state, $http, 
+        groupInfoFactory, paperTypeFactory, paperFactory,  UserService) {
 
     $scope.groupinfo = {}; 
     $scope.paper_type = {};
+
     var userId = UserService.getLoginInfo();
     var userParam = {code:'', user_id: userId };
 
-
+    alert('test');
 /*
         var items; 
         $scope.groupinfo = groupInfoFactory.query(userParam,function(result){
@@ -35,17 +37,24 @@ angular.module('rtsClientApp')
   };
   */
 
-    /*
-    groupInfoFactory.query( function(result){
-          if(result.user_id == null) return;
-          $scope.groupinfo  = result;
-    });    
 
+    groupInfoFactory.query({code:'', user_id:UserService.getLoginInfo()}, 
+      function(data){
+        debugger;
+        if(data.length == 0) return;
+        return $scope.groupinfo  = data;
+      },
+      function(error){
+        alert(error);
+      });    
+
+   /*
     paperTypeFactory.query(function(result){
           if(result.user_id == null) return;
           $scope.paper_type = result || {};
         });
     */
+
     //--------------------------
     // Generate uuid code 
     //--------------------------
@@ -85,25 +94,14 @@ angular.module('rtsClientApp')
         });
 
         var result = $scope.paper_type;
-      /*
-        $scope.version2 = {
-          query: function (query) {
-            var data = {results: []};
-            angular.forEach(results, function(results, key){
-              if (query.term.toUpperCase() === results.name.substring(0, query.term.length).toUpperCase()) {
-                data.results.push(results);
-              }
-            });
-            query.callback(data);
-          }
-        };
-      */
+
       }).error(function(data,status,headers, config) {
         $scope.status = status; 
         alert('fail addGroup function');
       });
     };
      $scope.updatePaperType = function(){
+
       if($scope.getPaperTypeParams().code == null) {
        $rootScope.$broadcast('event:notifyPaperType',{message:'update failed'});
         return;
@@ -126,14 +124,6 @@ angular.module('rtsClientApp')
         console.log(error);
       });
     };       
-
-    //------------------
-    // 그룹코드 관리 
-    //------------------
-    $scope.selectedGroup = function(selValue){
-      alert(selValue.code);
-    };
-
 
     $scope.getParams = function(){
       return {
@@ -173,20 +163,6 @@ angular.module('rtsClientApp')
        // $scope.groupinfo = groupInfoFactory.query(userParam,function(result){
        //               items = $scope.items = result;
        // });
-   
-   /*
-        $scope.version2 = {
-          query: function (query) {
-            var data = {results: []};
-            angular.forEach(results, function(results, key){
-              if (query.term.toUpperCase() === results.name.substring(0, query.term.length).toUpperCase()) {
-                data.results.push(results);
-              }
-            });
-            query.callback(data);
-          }
-        };
-*/       
 
       }).error(function(data,status,headers, config) {
         $scope.status = status; 
@@ -216,6 +192,6 @@ angular.module('rtsClientApp')
         $scope.groupinfo.name = error; 
         console.log(error);
       });
-    };                       
+    };                
 
   });
