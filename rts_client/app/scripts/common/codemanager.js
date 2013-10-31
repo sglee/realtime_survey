@@ -18,7 +18,7 @@ angular.module('rtsClientApp')
     var userId = UserService.getLoginInfo();
     var userParam = {code:'', user_id: userId };
 
-    alert('test');
+    //alert('test');
 /*
         var items; 
         $scope.groupinfo = groupInfoFactory.query(userParam,function(result){
