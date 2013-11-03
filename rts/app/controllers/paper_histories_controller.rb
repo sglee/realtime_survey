@@ -73,7 +73,7 @@ class PaperHistoriesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def paper_history_params
-      params.require(:paper_history).permit(:user_id, :paper_id, :start_date, :status)
+    def paper_history_params  
+      params.require(:paper_history).permit(:user_id, :paper_id, :start_date, :status, :groupinfo_code, :groupinfo_name, :paper_type_code, :paper_type_name )
     end
 end

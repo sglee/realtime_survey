@@ -51,12 +51,12 @@
   <link rel="stylesheet" type="text/css" class="ui" href="/bower_components/semantic-ui/build/minified/modules/dimmer.min.css">
   <link rel="stylesheet" type="text/css" class="ui" href="/bower_components/semantic-ui/build/minified/modules/transition.min.css">
 
-      <!-- build:css(.tmp) styles/main.css -->
-      <link rel="stylesheet" href="/styles/base.css">
-      <link rel="stylesheet" href="/styles/default_layout.css">
-      <link rel="stylesheet" href="/styles/app_layout.css">
-      <link rel="stylesheet" href="/styles/survey.css">
-      <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/default_layout.css">
+  <link rel="stylesheet" href="/styles/app_layout.css">
+  <link rel="stylesheet" href="/styles/survey.css">
+  <!-- endbuild -->
   
   <!-- angular-ui-select2 -->
   <!-- https://github.com/angular-ui/ui-select2 -->
@@ -71,6 +71,8 @@
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/angular-ui-select2/src/select2.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <!-- socket.io -->
+  <script src="/bower_components/angular-socket-io/socket.js"></script>
 
   <script src="/bower_components/semantic-ui/build/minified/modules/behavior/api.min.js"></script>
   <script src="/bower_components/semantic-ui/build/minified/modules/behavior/state.min.js"></script>
@@ -92,6 +94,9 @@
       <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
       <!-- endbuild -->
 
+      <!-- nodejs server socket.io -->
+      <script src="http://localhost:3001/socket.io/socket.io.js"></script>
+
       <!-- build:js({.tmp,app}) scripts/scripts.js -->
       <script src="/scripts/app.js"></script>
       <script src="/scripts/config.js"></script>
@@ -110,6 +115,7 @@
       <script src="/scripts/factories/groupinfo_factory.js"></script>
       <script src="/scripts/factories/papertype_factory.js"></script>
       <script src="/scripts/factories/paperdirect_factory.js"></script>
+      <script src="/scripts/factories/socket_factory.js"></script>    
 
       <script src="/scripts/services/userService.js"></script>
       <script src="/scripts/services/paperService.js"></script>
@@ -123,7 +129,6 @@
       <script src="/scripts/controllers/app/survey/rtsquestion.js"></script>
       <script src="/scripts/controllers/app/survey/paperlist.js"></script>
 
-     
       <script src="/scripts/controllers/app/survey/setting.js"></script>
       <script src="/scripts/controllers/app/setting.js"></script>
       <script src="/scripts/controllers/app/notification.js"></script>

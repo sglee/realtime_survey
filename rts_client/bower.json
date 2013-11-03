@@ -20,6 +20,7 @@
     "jquery-ui": "~1.10.3",
     "angular-ui-select2": "~0.0.2",
     "angular-ui-router": "~0.2.0",
-    "angularjs": "*"
+    "angularjs": "*",
+    "angular-socket-io": "~0.2.0"
   }
 }

@@ -59,4 +59,21 @@ angular.module('rtsClientApp')
 			  remove: {method:'DELETE'}
 	});  
 })
+// 설문히스토리정보 등록 
+// 설문상태정보 추가 
+.factory('paperHistoryFactory', 
+	function($resource){
+	  return $resource('/api/paper_history/:directive_no', {}, {
+	  		  get: {method:'GET', params:{directive_no:'@directive_no'}, isArray:false},
+			  query: {method:'GET', params:{directive_no:'@directive_no'}, isArray:true},
+			  post: {method:'POST'},
+			  update: {method:'PUT', params: {directive_no:'@directive_no',
+											  paper_id:'@paper_id',
+											  question_no:'@question_no',
+											  question:'@question',
+											  img_url:'@img_url',
+											  }}, 
+			  remove: {method:'DELETE'}
+	});  
+})
 ;

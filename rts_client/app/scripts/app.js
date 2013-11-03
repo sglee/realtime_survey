@@ -1,14 +1,15 @@
  /* 
  * 모듈명: rtsClientApp
  *
- * rts 라우터 정보를 관리하는 모
+ * rts 라우터 정보를 관리하는 모듈
  *
  * History
  * v1.0 - 최초 작성, sglee(2013/10/07)
+ * refrence : https://github.com/btford/angular-socket-io-seed
  */
 'use strict';
 
-angular.module('rtsClientApp', ['ngResource', 'ui.router', 'rails', 'ui.select2'])
+angular.module('rtsClientApp', ['ngResource', 'ui.router', 'rails', 'ui.select2', 'btford.socket-io'])
   .config(function ($httpProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
      
      $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');

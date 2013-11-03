@@ -1,8 +1,8 @@
-<div class="main-content" >
-<div class="ui form segment">
+<div class="main-content"  ng-controller="AppSurveyPaperlistCtrl">
+<div class="ui form segment" ng-controller="AppCodeManagerCtrl">
 <h3 class="ui black header">
-  <div class="sub header">{{paperlist.groupName}}</div>
-  <div class="circular ui dimgray button">{{paperlist.title}}</div>
+  <div class="sub header">{{paperlist.groupName}} {{messages}}</div>
+  <div class="circular ui dimgray">{{paperlist.title}}</div>
 </h3>
 <!-- group information --> 
       <select ui-select2 ng-model="papers.groupCode" data-placeholder="그룹선택" ng-required="true">
@@ -11,12 +11,13 @@
       </select>     
 <!-- end of group information --> 
 <!-- paper list -->
+<!--
       <select ui-select2 ng-model="papers.paperTypeCode" data-placeholder="설문제목 선택" ng-required="true">
           <option value=""></option>
           <option ng-repeat="paper in paper_type" value="{{paper.paper_type_code}}">{{paper.name}}</option>
-      </select>    
+      </select>   
+      --> 
 <!-- end of paper list --> 
-
         <div class="ui divided selection list">
         <ul class = "unstyled">
         <span ng-repeat="paper in paperlist.items">
@@ -24,12 +25,11 @@
             <div class="ui {{paper.color}} horizontal label" ui-sref="app.question">{{paper.status}}</div>
              {{paper.num}}.{{paper.title}} 
           </a>
-
           </span>
           </ul>
         </div>
         <div class="access-center">
-      <a class="ui blue submit button" ng-click="back()">Back</a>
+      <a class="ui blue submit button" ng-click="next()">Next</a>
     </div>
 </div>
 </div>
