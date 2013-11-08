@@ -11,9 +11,11 @@
     </div>
     <div id="groupbox">
     <!-- 그룹정보 추가 및 선택 -->
-      <select ui-select2 ng-model="papers.groupCode" data-placeholder="그룹선택" ng-required="true">
+      <select ui-select2 ng-model="papers.selGroup" ng-change="changedGroup()" data-placeholder="그룹선택" ng-required="true" ng-options="type.name for type in groupinfo">
           <option value=""></option>
+          <!--
           <option ng-repeat="group in groupinfo" value="{{group.code}}">{{group.name}}</option>
+          -->
       </select>     
 
   	<div class="ui red submit button" ng-click="add()">
@@ -22,15 +24,15 @@
   	<div class="ui darkgray submit button" ng-click="delete()"><i class="remove icon"></i></div>
 
       <div class="field">
-        <input placeholder="그룹명을 추가해 주세요" type="text" ng-model="groupinfo.name">{{errorGroup}}
+        <input placeholder="그룹명을 추가해 주세요" type="text" ng-model="groupinfo.name" value="{{grpName}}">{{errorGroup}}
       </div>
     </div>
     <!-- End of Group Selection-->
     <!-- 설문지 추가 및 선택 -->
       <div id="paperbox" class="paperbox">
-      <select ui-select2 ng-model="papers.paperTypeCode" data-placeholder="설문제목 선택" ng-required="true">
+      <select ui-select2 ng-model="papers.selPaperType" ng-change="changedPaperType()" data-placeholder="설문제목 선택" ng-required="true" ng-options="type.name for type in paper_type">
           <option value=""></option>
-          <option ng-repeat="paper in paper_type" value="{{paper.paper_type_code}}">{{paper.name}}</option>
+         <!-- <option ng-repeat="paper in paper_type" value="{{paper.paper_type_code}}">{{paper.name}}</option> -->
       </select>    
 
 	<div class="ui red submit button" ng-click="addPaperType()"><i class="add icon"></i></div>
@@ -38,7 +40,7 @@
 	<div class="ui darkgray submit button" ng-click="deletePaperType()"><i class="remove icon"></i></div>
 
   <div class="field">
-        <input placeholder="설문지 제목을 입력해 주세요." type="text" ng-model="paper_type.name">{{errorPaperType}}
+        <input placeholder="설문지 제목을 입력해 주세요." type="text" ng-model="paper_type.name" value="{{ptypeName}}">{{errorPaperType}}
    </div>
 
     <!-- End of Paper Selection-->
@@ -68,10 +70,11 @@
 
    <!-- Directive text selection -->
     <div id = "directive">
-    <!-- 설문유형 -->
-      <select ui-select2 ng-model="papersDirect.directive_no" data-placeholder="지시문 선택" ng-required="true">
+      <select ui-select2 ng-model="papersDirect.selDirectiveType" ng-change="changedDirectiveType()" data-placeholder="지시문 선택" ng-required="true" ng-options="type.content for type in papersDirect">
           <option value=""></option>
+          <!--
           <option ng-repeat="directive in papersDirect" value="{{directive.directive_no}}">{{directive.content}}</option>
+          -->
       </select>       
 
 	<div class="ui red submit button" ng-click="addDirective()"><i class="add icon"></i></div>

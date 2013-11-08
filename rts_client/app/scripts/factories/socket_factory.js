@@ -8,9 +8,10 @@
 'use strict';
 
 angular.module('rtsClientApp')
-.factory('socket', function($rootScope){
-      debugger;
+.factory('socketFactory', function($rootScope){
+/*
 	  var socket = io.connect('http://localhost:3001'); // Connection to the server socket
+	  
 	  return {
 	  	on: function(eventName, callback){
 		  		socket.on(eventName, function(){
@@ -31,4 +32,5 @@ angular.module('rtsClientApp')
 	  		});
 	  	}
 	  };
+*/
 });

@@ -72,7 +72,9 @@
   <script src="/bower_components/angular-ui-select2/src/select2.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <!-- socket.io -->
+  <!--
   <script src="/bower_components/angular-socket-io/socket.js"></script>
+  -->
 
   <script src="/bower_components/semantic-ui/build/minified/modules/behavior/api.min.js"></script>
   <script src="/bower_components/semantic-ui/build/minified/modules/behavior/state.min.js"></script>
@@ -120,6 +122,7 @@
       <script src="/scripts/services/userService.js"></script>
       <script src="/scripts/services/paperService.js"></script>
       
+      <script src="/scripts/filters/colorFilter.js"></script>
       <script src="/scripts/directives/is_user_or_email.js"></script>
 
       <script src="/scripts/controllers/app.js"></script>
@@ -147,6 +150,6 @@
 
 </head>
 <body ng-app="rtsClientApp" ng-controller="GlobalCtrl">
-  <ui-view></ui-view>
+  <div ui-view ng-animate="'fade'"></div>
 </body>
 </html>

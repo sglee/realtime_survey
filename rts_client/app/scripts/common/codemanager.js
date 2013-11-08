@@ -18,29 +18,8 @@ angular.module('rtsClientApp')
     var userId = UserService.getLoginInfo();
     var userParam = {code:'', user_id: userId };
 
-    //alert('test');
-/*
-        var items; 
-        $scope.groupinfo = groupInfoFactory.query(userParam,function(result){
-                items = $scope.items = result;
-        });
-  $scope.version2 = {
-    query: function (query) {
-      var data = {results: []};
-      angular.forEach(items, function(item, key){
-        if (query.term.toUpperCase() === item.text.substring(0, query.term.length).toUpperCase()) {
-          data.results.push(item);
-        }
-      });
-      query.callback(data);
-    }
-  };
-  */
-
-
     groupInfoFactory.query({code:'', user_id:UserService.getLoginInfo()}, 
       function(data){
-        debugger;
         if(data.length == 0) return;
         return $scope.groupinfo  = data;
       },
@@ -87,21 +66,17 @@ angular.module('rtsClientApp')
       }).success(function(data, status, headers, config) {  
         $rootScope.$broadcast('event:notifyPaperType',{message:status});
         // 설문코드 등록이 완료되면 현재 등록된 설문종류를 모두 불러온다. 
-        $scope.status = status;
-        $scope.paper_type = paperTypeFactory.query(function(result){
-         // if(result.user_id == null) return;
-         // $scope.paper_type = result || {};
+         paperTypeFactory.query({user_id:user_id}, function(result){
+          $scope.paper_type = result || {};
         });
-
-        var result = $scope.paper_type;
 
       }).error(function(data,status,headers, config) {
         $scope.status = status; 
         alert('fail addGroup function');
       });
     };
-     $scope.updatePaperType = function(){
 
+     $scope.updatePaperType = function(){
       if($scope.getPaperTypeParams().code == null) {
        $rootScope.$broadcast('event:notifyPaperType',{message:'update failed'});
         return;
@@ -137,16 +112,18 @@ angular.module('rtsClientApp')
 
       var user_id = UserService.getLoginInfo();
       if(user_id == null) return $location.path("/");
-
-      $scope.groupinfo.user_id = user_id;
-      $scope.groupinfo.code = $scope.getUUIDCode('G');
-      $scope.groupinfo.name = $scope.groupinfo.name;
-      $scope.groupinfo.is_use = 'Y';
+      
+      var groupinfos = {
+        user_id : user_id,
+        code : $scope.getUUIDCode('G'),
+        name : $scope.groupinfo.name,
+        is_use : 'Y'
+      };
 
       $http({
         url: '/api/groupinfos',
         method: 'POST',
-        data: { groupinfo: $scope.groupinfo }
+        data: { groupinfo: groupinfos }
       }).success(function(data, status, headers, config) {
         // 그룹추가가 완료되면 다시 전체를 조회해서 그룹선택 콤보에 바인딩한다. 
         $rootScope.$broadcast('event:notifyGroup',{message:status});
@@ -159,7 +136,6 @@ angular.module('rtsClientApp')
        // });
         });
 
-        var result = $scope.groupinfo;
        // $scope.groupinfo = groupInfoFactory.query(userParam,function(result){
        //               items = $scope.items = result;
        // });

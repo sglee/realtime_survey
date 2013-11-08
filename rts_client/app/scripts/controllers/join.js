@@ -9,12 +9,10 @@
 'use strict';
 
 angular.module('rtsClientApp')
-  .controller('JoinCtrl', function ($location, $scope, $state, $http, UserInfo, UserService) {
-  	//alert('user->' + $scope.user.email + "pwd: ->" + $scope.user.password);
-    // Signup action
+  .controller('JoinCtrl', function ($location, $scope, $state, $http, UserService) {
 
+    // Signup action
     $scope.signup = function() {
-      debugger;
       $http({
         url: '/api/users',
         method: 'POST',
@@ -66,7 +64,6 @@ angular.module('rtsClientApp')
           $scope.ngModel = data.data.data;
           UserService.set(data.data.auth_token);
 
-          debugger; 
           $scope.manager = {};
           $scope.manager.user_id = $scope.user.email;
           $scope.authUserId = $scope.user.email; 

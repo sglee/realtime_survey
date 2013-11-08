@@ -5,7 +5,7 @@ class PaperHistory
   field :start_date, type: Date
   field :status, type: String
 
-  field :goupinfo_code, type: String
+  field :groupinfo_code, type: String
   field :groupinfo_name, type: String
   field :paper_type_code, type: String
   field :paper_type_name, type: String

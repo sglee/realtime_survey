@@ -1,31 +1,27 @@
-<div class="main-content"  ng-controller="AppSurveyPaperlistCtrl">
+<div class="main-content">
+<!--<div class="main-content"  ng-controller="AppSurveyPaperlistCtrl">-->
 <div class="ui form segment" ng-controller="AppCodeManagerCtrl">
 <h3 class="ui black header">
-  <div class="sub header">{{paperlist.groupName}} {{messages}}</div>
-  <div class="circular ui dimgray">{{paperlist.title}}</div>
+  <div class="sub header">{{groupName}} {{messages}}</div>
+  <div class="sub header">{{title}}</div>
 </h3>
-<!-- group information --> 
+      <!-- group information --> 
       <select ui-select2 ng-model="papers.groupCode" data-placeholder="그룹선택" ng-required="true">
           <option value=""></option>
           <option ng-repeat="group in groupinfo" value="{{group.code}}">{{group.name}}</option>
       </select>     
-<!-- end of group information --> 
-<!-- paper list -->
-<!--
-      <select ui-select2 ng-model="papers.paperTypeCode" data-placeholder="설문제목 선택" ng-required="true">
-          <option value=""></option>
-          <option ng-repeat="paper in paper_type" value="{{paper.paper_type_code}}">{{paper.name}}</option>
-      </select>   
-      --> 
-<!-- end of paper list --> 
+      <!-- end of group information --> 
+      <!-- paper list -->
         <div class="ui divided selection list">
         <ul class = "unstyled">
-        <span ng-repeat="paper in paperlist.items">
+        <span ng-repeat="paper in paperlist">
           <a class="item">
-            <div class="ui {{paper.color}} horizontal label" ui-sref="app.question">{{paper.status}}</div>
-             {{paper.num}}.{{paper.title}} 
+            <div class="ui {{paper.status|color}} horizontal label" 
+            ui-sref="app.question({ id: paper.paper_id})" ng-model="paper.status">{{paper.status}}</div>
+             {{paper.paper_id}}.{{paper.paper_type_name}} - {{paper.start_date}}
           </a>
           </span>
+          <!-- end of paper list --> 
           </ul>
         </div>
         <div class="access-center">

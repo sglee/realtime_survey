@@ -12,25 +12,55 @@ angular.module('rtsClientApp')
 	.controller('AppSurveyPaperlistCtrl', function($scope, $state, $location, 
 			UserService, socket){
 
-
 		$scope.groupinfo = {};
 		$scope.paperlist = {};
 		$scope.users = {};
 		$scope.users.message = "Test Survey socket";
+		$scope.groupName = "RTS 설문 리스트";
+		$scope.title =  '현재 참여할 수 있는 설문정보입니다. 시작버튼을 선택하면 설문에 참여하실 수 있습니다.';
 
-		socket.on('connected', function(data){
-			//$scope.messages.push( JSON.parse(data.msg));
+	try{
+        
+   /*
+        socket.on("connect", function(){
+        	alert("connect");
+        	console.log("connected");
+        	socket.emit("user", {Id:101});
+        });
+
+        socket.on("update", function(data){
+        	alert("update");
+        	console.log(data);
+        });
+
+		socket.once('connect', function(){
+			alert("once connect");
+			console.log("connnected");
+			
+			setTimeout(function(){
+				socket.emit("push", {Id: 101, Counts: { NewMessages: 3} });
+				setTimeout(function(){
+					socket.emit("push", {Id:102, Counts: { NewMessages: 5}});
+
+				}, 2000);
+			}, 4000);
+		});
+*/
+		socket.on('connect', function(){
+			console.log('connect');
+			socket.emit('user', {Id: UserService.getLoginInfo()});
 		});
 
-		socket.emit('send:paperinfo', {paperid: '3333', directive_no: '333'});
+		socket.emit('send:cJoin', {user_id:UserService.getLoginInfo()});
 
 		socket.on('send:group', function(data){
-			alert('rec:' + data[0].user_id);
+			$scope.groupinfo = data;
 		});
 
-		socket.on('send:changePaper', function(data){
+		socket.on('send:sPaperHistory', function(data) {
 			$scope.paperlist = data;
 		});
+
 		socket.on('send:message', function(message){
 			$scope.messages.push(message);
 		});
@@ -60,49 +90,20 @@ angular.module('rtsClientApp')
 			}
 		});
 
-
+	}catch(e){console.log(e);}
 		// private helpers
 		//=================
 
 		// Methods published  to the scope
-		//=================================
-		$scope.sendMessage = function(){
-			socket.emit('send:paperinfo', {
-				message: $scope.paperinfo
-			});
+		//================================
 
-			$scope.paperinfo.push({
-				userid: UserService.getLoginInfo(),
-				text: $scope.users.message,
-				paperid: "4349",
-				directive_no: "1"
-
-			});
-
-			$scope.message = '';
-		};
-/*
-		$scope.paperlist = {
-			groupName: '2013 설문 리스트 현황',
-			title: '현재 참여할 수 있는 설문정보입니다. 시작버튼을 선택하면 설문에 참여하실 수 있습니다.',
-			items: [
-					{title: '우분투 2013 세미나', status: 'Join', num: 2345, color: 'red'},
-					{title: 'angularJS 2013 세미나', status: 'Waiting', num: 8900, color: 'blue'},
-					{title: 'Microsoft 2013 세미나', status: 'Done', num: 3455, color: 'gray'},
-					{title: 'Oracle 2013 세미나', status: 'Done', num: 2340, color: 'gray'},
-					{title: 'Mysql 2013 세미나', status: 'Waiting', num: 9382, color: 'blue'},
-					{title: 'MongoDB 2013 세미나', status: 'Join', num: 7677, color: 'red'}
-				]
-			}; 
-*/
 		$scope.back = function (){
 			$location.path("/");
 		}
 
 		$scope.next = function(){
 			$scope.paperlist = {};
-			socket.emit('send:paperinfo', {paperid: '3333', directive_no: '333'});
-			socket.emit('loadGroup',{user_id:'lover@daum.net'});
+			//socket.emit('loadGroup',{user_id:'lover@daum.net'});
 		}
 
 	});

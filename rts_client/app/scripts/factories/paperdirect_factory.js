@@ -51,6 +51,7 @@ angular.module('rtsClientApp')
 			  query: {method:'GET', params:{directive_no:'@directive_no'}, isArray:true},
 			  post: {method:'POST'},
 			  update: {method:'PUT', params: {directive_no:'@directive_no',
+			  								  directive_content:'@directive_content',
 											  paper_id:'@paper_id',
 											  question_no:'@question_no',
 											  question:'@question',

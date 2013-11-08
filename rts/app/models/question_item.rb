@@ -3,6 +3,7 @@ class QuestionItem
   #field :question_no, type: Integer
   field :paper_id, type: Integer
   field :directive_no, type: Integer
+  field :directive_content, type: String
   field :question, type: String
   field :img_url, type: String
 
