@@ -10,11 +10,20 @@
 
 angular.module('rtsClientApp')
   .controller('NoJoinCtrl', function ($scope, $state, $location){
-  	$scope.cancelAccess = function (){
-  	
+
+  	$scope.paper_num  = '0000';
+
+  	$scope.cancelAccess = function (){		
       $location.path("/");
-    }
+    };
+
     $scope.tryAccess = function (){
-      $state.go('app.question');
-    }
+debugger;
+      var paper_num = $scope.paper_num;
+      var loginId = $scope.loginId;
+      var data = {id: $scope.paper_num, loginId: $scope.loginId};
+      $state.go('app.paperlist(data)');
+
+    };
+    
   });

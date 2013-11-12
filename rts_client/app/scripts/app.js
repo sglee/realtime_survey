@@ -74,7 +74,7 @@ angular.module('rtsClientApp', ['ngResource', 'ui.router', 'rails', 'ui.select2'
         controller: 'AppSurveyRtsQuestionCtrl'
       })
       .state('app.paperlist', {
-        url: '/paperlist',
+        url: '/:id/:loginId',
         templateUrl: '/views/app/survey/paperlist.html',
         controller: 'AppSurveyPaperlistCtrl'
       })

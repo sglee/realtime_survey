@@ -28,37 +28,43 @@ exports.load = function(data, sockets){
 	if(data.seq == 0){
 		questionItem.find({paper_id:data.paper_id})
 		.limit(1)
-		.sort('-directive_no')
+		//.sort('-directive_no')
 		.exec(function(err, results){
-			if(!err){
-	
+			if(!err){	
 				//sockets.emit('res:paperInfo', results); // Send message to sender 
 				//sockets.broadcast.emit('res:questionItem', results); // Send Message to every one But sender.
 
-					questionItem.find({paper_id:results[0].paper_id, directive_no: results[0].directive_no})
-					.sort('-directive_no')
-					.exec(function(err, rst){
-						if(!err){
-							sockets.emit('res:paperInfo', rst); // Send message to sender 
-							console.log('Data is -->' + rst);
-						}
-					});
-				}else{
-					console.log('everything is empty');
+				questionItem.find({paper_id:results[0].paper_id, directive_no: results[0].directive_no})
+				//.sort('-directive_no')
+				.exec(function(err, rst){
+					if(!err){
+						sockets.emit('res:paperInfo', rst); // Send message to sender 
+						console.log('Data is -->' + rst);
+					} else{
+						console.log('error questionItem loading');
+					}
 
-				}
-					//cleanup();
+				});
+			}else{
+				console.log('everything is empty');
+			}
+				//cleanup();
 			});
 	}else{
 		questionItem.find({paper_id:data.paper_id})
 		.where('directive_no').gt(data.directive_no)
 		.limit(1)
-		.sort('-directive_no')
+		//.sort('-directive_no')
 		.exec(function(err, results){
 			if(!err){
-				sockets.emit('res:paperInfo', results); // Send message to sender 
-				//sockets.broadcast.emit('res:questionItem', results); // Send Message to every one But sender.
-				console.log('Data is -->' + results);
+				questionItem.find({paper_id:results[0].paper_id, directive_no: results[0].directive_no})
+				//.sort('-directive_no')
+				.exec(function(err, rst){
+					if(!err){
+						sockets.emit('res:paperInfo', rst); // Send message to sender 
+						console.log('Data is -->' + rst);
+					}
+				});
 			}else{
 				console.log('everything is empty');
 

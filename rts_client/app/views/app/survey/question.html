@@ -1,15 +1,15 @@
 <div class="main-content">
 <div class="ui form segment">
 <h3 class="ui black header">
-  <div class="sub header">2013 Open source conference</div>
+  <div class="sub header">Open source conference</div>
   {{directives}}
 </h3>
 	<div class="ui divided selection list">
 	  <a class="item" ng-repeat="items in questions">
-	    <div class="ui blue horizontal label" ng-click="sendQeustion(items)">Select</div>
+	    <div class="ui blue horizontal label" ng-click="sendQuestion(items)">Select</div>
 	     {{ items.question }}<br>
-	   <pre>Value: {{dynamic}}</pre>
-	   <progress percent="dynamic"></progress>
+	   <pre>Total: {{voteRate}}  / users:{{totalUser}}</pre>
+	   <progress percent="voteRate"></progress>
 	  </a>
 	</div>
 	<div class="access-center">

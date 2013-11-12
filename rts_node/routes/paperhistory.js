@@ -30,7 +30,6 @@ var Paper_History = new Schema({
 var paperHistory = mongoose.model('Paper_History', Paper_History);
 
 exports.load = function(data, sockets){
-
 	paperHistory.find({user_id:data.user_id}).exec(function(err, results){
 		if(!err){
 			console.log('paperHistory --> data user_id:' + data.user_id);
@@ -53,16 +52,17 @@ exports.load = function(data, sockets){
 			//cleanup();
 
 	});
-/*
-    q.exec(function (err, results) {
-      if (err) throw err;
-      console.log("Are the results MongooseDocuments?: %s", results[0] instanceof mongoose.Document);
+};
 
-      console.log(results);
-      cleanup();
-    });	
-*/
-
+exports.loadByPaper = function(data, sockets){
+	paperHistory.find({paper_id: data.paper_id}).exec(function(err, results){
+		if(!err){
+			console.log('load paperHistory by paper_id --> ' + results);
+			sockets.emit('send:sPaperHistory', results); 
+		}else{
+			console.log('everything is empty');
+		}
+	});
 };
 
 function cleanup() {

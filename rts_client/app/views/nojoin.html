@@ -1,22 +1,14 @@
-<div class="ui form inverted segment">
+<div class="ui form inverted segment" >
 <div class="ui top attached label">Access Number</div>
 <div class="field">
- <p class="access-text"> 68493
+ <p class="access-text"> <input type="text" placeholder="Please, Input your access number." ng-model="paper_num">
   </p>
  </div>
-  <div class="field join-number">
-    <div class="ui left labeled icon input">
-      <input type="text" placeholder="Please, Input your access number.">
-      <i class="user icon"></i>
-      <div class="ui corner label">
-        <i class="icon asterisk"></i>
-      </div>
-    </div>
-  </div>
+
   <div class="field">
     <label>Input your phone number</label>
     <div class="ui left labeled icon input">
-      <input type="text" placeholder="Please, Input your phone number!">
+      <input type="text" placeholder="Please, Input your phone number or email!" ng-model="loginId">
       <i class="user icon"></i>
       <div class="ui corner label">
         <i class="icon asterisk"></i>
@@ -28,7 +20,7 @@
   </div>
   <div class="access-center">
   <div class="ui form ux-center">
-    <a class="ui blue submit button" ng-click="tryAccess()">OK</a>
+    <a class="ui blue submit button"  ui-sref="app.paperlist({ id: paper_num, loginId: loginId })" >OK</a>
     <a class="ui blue submit button" ng-click="cancelAccess()">Cancel</a>
    </div>
    </div>
