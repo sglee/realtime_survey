@@ -79,4 +79,9 @@ angular.module('rtsClientApp')
       });
     };
 
+    // no member access 
+    $scope.access = function(){
+      $state.go('default.nojoin');
+    };
+
   });

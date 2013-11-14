@@ -31,7 +31,6 @@ angular.module('rtsClientApp')
     });
 
     socket.on('currentPaperRoom', function(data){
-
         $scope.totalUser = data.total || 0;
     });
 
