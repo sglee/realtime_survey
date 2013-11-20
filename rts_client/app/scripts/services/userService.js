@@ -3,31 +3,31 @@
 angular.module('rtsClientApp')
 .service('socket', function ($rootScope) {
     var socket = io.connect('http://localhost:3001'); // Connection to the server socket
-    
     return {
-      on: function(eventName, callback){
-          socket.on(eventName, function(){
-            var args = arguments;
-            $rootScope.$apply(function(){
-              callback.apply(socket, args);
-            });         
-          });
-    },
-    emit: function(eventName, data, callback){
-        socket.emit(eventName, data, function(){
-          var args = arguments;
-          $rootScope.$apply(function(){
-            if(callback){
-              callback.apply(socket, args);
-            }
-          });
-        });
-      }
+              on: function(eventName, callback){
+                  socket.on(eventName, function(){
+                    var args = arguments;
+                    $rootScope.$apply(function(){
+                      callback.apply(socket, args);
+                    });         
+                  });
+            },
+            emit: function(eventName, data, callback){
+                socket.emit(eventName, data, function(){
+                  var args = arguments;
+                  $rootScope.$apply(function(){
+                    if(callback){
+                      callback.apply(socket, args);
+                    }
+                  });
+                });
+              }
     };
 })
 .factory('UserService', function($http, $q) {
   var token = null,
       user_id = null,
+      authority = null, 
       currentUser;
  
   var tokenHandlers = {
@@ -42,14 +42,19 @@ angular.module('rtsClientApp')
         return token;
       }
     },
-
     setLoginInfo: function ($scope, userId) {
       user_id = userId;
     },
     getLoginInfo: function ($scope) {
       return user_id;
     },
-
+    // After login, set users authority, manager or member or no member
+    setAuthority: function($scope, level){
+      authority = level; 
+    },
+    getAuthority: function($scope){
+      return authority; 
+    },
     getCurrentUser: function() {
       var d = $q.defer();
 
@@ -65,7 +70,6 @@ angular.module('rtsClientApp')
       }
       return d.promise;
     },
-
     wrapActions: function(r, actions) {
       // copy original resource
       var wrappedResource = r;

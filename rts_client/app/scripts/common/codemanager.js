@@ -10,7 +10,7 @@
 
 angular.module('rtsClientApp')
   .controller('AppCodeManagerCtrl', function ($location,$rootScope, $scope, $state, $http, 
-        groupInfoFactory, paperTypeFactory, paperFactory,  UserService) {
+        groupInfoFactory, paperTypeFactory, paperFactory, managerBasicFactory, UserService) {
 
     $scope.groupinfo = {}; 
     $scope.paper_type = {};
@@ -27,12 +27,14 @@ angular.module('rtsClientApp')
         alert(error);
       });    
 
-   /*
-    paperTypeFactory.query(function(result){
-          if(result.user_id == null) return;
-          $scope.paper_type = result || {};
-        });
-    */
+    managerBasicFactory.get({user_id: userId }, function (data) {
+      if(data.auth_code)
+        UserService.setAuthority($scope, data.auth_code); 
+    }, function (error) {
+        alert(error);
+          console.log(error)
+    });
+
 
     //--------------------------
     // Generate uuid code 

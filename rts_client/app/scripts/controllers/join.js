@@ -34,7 +34,6 @@ angular.module('rtsClientApp')
 
     // logOut
     $scope.logout = function() {
-      // alert('auth_token:' + UserService.get());
     	// Post to our api sign_in route
       $http({
         url: '/api/users/sign_out',
@@ -49,7 +48,7 @@ angular.module('rtsClientApp')
      });
   };
 
-    // login action
+    // 1. login type: member login, manager login 
     $scope.login = function() {
       // Post to our api sign_in route
       $http({
@@ -63,7 +62,7 @@ angular.module('rtsClientApp')
           // returns 401 - so we can capture the user errors
           $scope.ngModel = data.data.data;
           UserService.set(data.data.auth_token);
-
+          
           $scope.manager = {};
           $scope.manager.user_id = $scope.user.email;
           $scope.authUserId = $scope.user.email; 

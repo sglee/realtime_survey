@@ -37,7 +37,7 @@ angular.module('rtsClientApp')
 }) 
 // angular-rails-resouce test ---> failed
 .factory('Manager', ['railsResourceFactory', function(railsResourceFactory){
-  return railsResourceFactory({url: '/api/managers/:id.json', 
+  return railsResourceFactory({url: '/api/managers/:id', 
           name: 'manager',
           defaultParams: { id: '@id' }
 

@@ -9,7 +9,6 @@ db.once('open', function() {
 
 mongoose.connect('mongodb://localhost/rts_development');
 
-
 var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
@@ -24,7 +23,7 @@ var Question_Item = new Schema({
 
 var questionItem = mongoose.model('Question_Item', Question_Item);
 
-exports.load = function(data, sockets){
+exports.load = function(data, sockets, ioSockets){
 	if(data.seq == 0){
 		questionItem.find({paper_id:data.paper_id})
 		.limit(1)
@@ -61,15 +60,18 @@ exports.load = function(data, sockets){
 				//.sort('-directive_no')
 				.exec(function(err, rst){
 					if(!err){
-						sockets.emit('res:paperInfo', rst); // Send message to sender 
+						if(ioSockets && data.authority == 'L001'){
+							console.log('authority-->' + data.authority);
+							ioSockets.in(sockets.room).emit('res:paperInfo', rst);
+						}
+						else
+							sockets.emit('res:paperInfo', rst); // Send message to sender 
 						console.log('Data is -->' + rst);
 					}
 				});
 			}else{
 				console.log('everything is empty');
-
 			}
-				//cleanup();
 		});
 	}
 };

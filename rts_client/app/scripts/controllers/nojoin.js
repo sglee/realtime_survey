@@ -18,12 +18,10 @@ angular.module('rtsClientApp')
     };
 
     $scope.tryAccess = function (){
-debugger;
       var paper_num = $scope.paper_num;
       var loginId = $scope.loginId;
       var data = {id: $scope.paper_num, loginId: $scope.loginId};
       $state.go('app.paperlist(data)');
-
     };
     
   });

@@ -57,7 +57,6 @@ angular.module('rtsClientApp')
     // 선택된 지시문 정보 
     //--------------------------
     $scope.changedDirectiveType = function(){
-      debugger;
       $scope.selDirectiveNo = $scope.papersDirect.selDirectiveType.directive_no;
       $scope.selDirectiveContent = $scope.papersDirect.selDirectiveType.content;
     };
@@ -97,9 +96,7 @@ angular.module('rtsClientApp')
     // 설문지 조회
     //------------------------------
     $scope.getPapers = function(){
-      //$scope.papers = {};
       var userId = UserService.getLoginInfo($scope);
-      alert($scope.papers.paper_id);
       if(userId == null) return null; 
       paperFactory.get({paper_id: $scope.papers.paper_id }, 
         function (data) {
@@ -167,7 +164,6 @@ angular.module('rtsClientApp')
     // :question_no, :paper_id, :directive_no, : directive_content, :question, :img_url
     //------------------------------
     $scope.getQItemParams = function (argument) {
-     alert($scope.selDirectiveContent);
       return {  question_no : $scope.questionItems.question_no,
                 paper_id : $scope.myPaperId,
                 directive_no : $scope.selDirectiveNo,

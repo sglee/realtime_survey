@@ -8,12 +8,12 @@
 	  <a class="item" ng-repeat="items in questions">
 	    <div class="ui blue horizontal label" ng-click="sendQuestion(items)">Select</div>
 	     {{ items.question }}<br>
-	   <pre>Total: {{voteRate}}  / users:{{totalUser}}</pre>
+	   <pre><i class="thumbs up icon"></i>: {{voteRate}}  / <i class="users icon"></i>:{{totalUser}}</pre>
 	   <progress percent="voteRate"></progress>
 	  </a>
 	</div>
 	<div class="access-center">
-      <a class="ui blue submit button" ng-click="next()">Next</a>
+      <a class="ui blue submit button" ng-click="next()" ng-show="isManager">Next</a>
     </div>
 </div>
 </div>

@@ -13,9 +13,24 @@ angular.module('rtsClientApp')
    // implement
 })
 .factory('PaperService', function($http, $q) {
+  var paperInfo = {};
+
+  var paperProperties = {
+    set: function(v) { paperInfo = v;},
+    get: function(){
+      return paperInfo; 
+    }
+  };
+
+  return paperInfo; 
+
+  /*
   var paperNo = null, // paper number
+      //isAutomatic = 'Y',
+      paperInfo = null; 
+      paperType = ''
       user_id = null;
-    
+
   var paperNumHandlers = {
     // store our token for later retrieval
     set: function(v) { paperNo = v; },
@@ -28,15 +43,9 @@ angular.module('rtsClientApp')
         return paperNo;
       }
     }
-/*
-    setPaperInfo: function ($scope, userId) {
-      user_id = userId;
-    },
-    getLoginInfo: function ($scope) {
-      return user_id;
-    }
-*/
+
   };
 
   return paperNumHandlers;
+  */
 });

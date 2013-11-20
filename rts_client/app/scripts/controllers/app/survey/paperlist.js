@@ -13,6 +13,7 @@ angular.module('rtsClientApp')
 			UserService, socket){
 
     try {
+
 		$scope.param_paper_id = $scope.$stateParams.id || -1;
 		$scope.param_loginId = $scope.$stateParams.loginId;
 
@@ -37,6 +38,7 @@ angular.module('rtsClientApp')
 		alert(ex);
 	}
 
+	$scope.isManager = false; 
 	$scope.groupinfo = {};
 	$scope.paperlist = {};
 	$scope.users = {};
@@ -45,16 +47,12 @@ angular.module('rtsClientApp')
 	$scope.title =  '현재 참여할 수 있는 설문정보입니다. 시작버튼을 선택하면 설문에 참여하실 수 있습니다.';
 
 	try{
-		/*
-		socket.on('connect', function(){
-			console.log('connect');
-			socket.emit('user', {Id: UserService.getLoginInfo()});
-		});
-		*/
 
-		if(UserService.getLoginInfo() != null && $scope.param_paper_id == -1) // 정회원인 경우 Id로 정보 로딩 
+		if(UserService.getAuthority() == 'L001') $scope.isManager = true; 
+	    // 정회원인 경우 Id로 정보 로딩 
+		if(UserService.getLoginInfo() != null && $scope.param_paper_id == -1)
 			socket.emit('send:cJoin', {user_id:UserService.getLoginInfo()});
-		else{	// 비회원인 경우 설문번호에 의해 정보 로딩
+		else {	// 비회원인 경우 설문번호에 의해 정보 로딩
 			socket.emit('req:paperInfoByPaperId', {paper_id: $scope.param_paper_id});
 		}
 
@@ -76,7 +74,6 @@ angular.module('rtsClientApp')
 
 	// Methods published  to the scope
 	//================================
-
 	$scope.back = function (){
 		$location.path("/");
 	}
@@ -86,4 +83,4 @@ angular.module('rtsClientApp')
 		//socket.emit('loadGroup',{user_id:'lover@daum.net'});
 	}
 
-	});
+});

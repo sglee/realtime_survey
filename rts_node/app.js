@@ -19,9 +19,8 @@ var socketio = require('socket.io');
 
 var app = express();
 
-
 app.configure(function(){
-	// all environments짐
+	// all environments
 	app.set('port', process.env.PORT || 3001);
     app.set('redisPort', 3002);
 	app.set('views', path.join(__dirname, 'views'));
@@ -134,10 +133,8 @@ try
     console.log(e);
 }
 */
-//-----------------개선 사항 -----------------------// 
 try
 {
-
     // paper rooms are consisted of paper_id.
     var paperRooms = [];
     var usernames = [];
@@ -204,43 +201,6 @@ try
             socket.leave(socket.room);
         });
 
-/*
-		// Clients need to send a "user" message to identify themselves...
-        socket.once("user", function(userData){
-            try
-            {
-            	console.log('R: UserData');
-                // Make sure we have the data we need...
-                if (userData == null || (userData.Id || null) == null) {
-                    return;
-                }
-
-                console.log('R: UserData Join');
-                // Join the user to their own private channel so we can send them notifications...
-                socket.join(userData.Id);
-            } catch (e) { console.log(e); }
-         });
-
-        // We can now "push" information to the user from any process that can connect to this service...
-        socket.on("push", function(data){
-            try 
-            {
-                // Make sure we have the data we need...
-                if (data == null || (data.Id || null) == null) {
-                    return;
-                }
-                console.log(data);
-
-                // Let's clean up the data a little (we don't need to tell the user who they are)
-                var channel = data.Id;
-                delete data.Id;
-
-                // Now we will braodcast the data only to the user's private channel...
-                socket.broadcast.to(channel, data).emit("update", data)
-            } catch (e) { console.log(e); }
-        });
-
-*/
 		socket.on('send:cPaperHistory', function(data){
 
 		});
@@ -269,7 +229,7 @@ try
         socket.on('req:selectedQuestion', function(data){
             questionAnswer.save(data, socket);
             data.seq = -1; 
-            questionItem.load(data, socket);
+            questionItem.load(data, socket, io.sockets);
         });
 		socket.on('evt:join', function(user){
 			// 설문 참여자 정보 관리
@@ -287,11 +247,11 @@ try
 			// 채팅
 		});
 		socket.on('disconnect', function(){
-			/*
-			socket.broadcast.emit('user:left', {
-				name: name
-			});
-			*/
+		/*
+		socket.broadcast.emit('user:left', {
+			name: name
+		});
+		*/
 		});	
 	});
 
